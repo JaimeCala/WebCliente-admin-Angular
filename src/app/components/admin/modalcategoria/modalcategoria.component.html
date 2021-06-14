@@ -1,0 +1,76 @@
+
+
+<h2 mat-dialog-title>{{data?.title}}</h2>
+<mat-dialog-content>
+    <div class="modal-form">
+        <form [formGroup]="categoriaForm" >
+       
+            <mat-form-field class="full-width-input">
+                <input formControlName="nombre" matInput placeholder="Nombres" id="nombrecate" oninput="this.value=this.value.toUpperCase()" required/>
+                <mat-error *ngIf="checkField('nombre')">
+                    {{getErrorMessage('nombre')}}
+                </mat-error>
+            </mat-form-field>
+
+        </form>
+    </div>
+    <div class="modal-form">
+        <form [formGroup]="imgCategoriaForm">
+            <div class="container-input-file">
+                <mat-card>
+                    <div class="header-image">
+                            <mat-card-header>Inserta imagen</mat-card-header>
+                    </div>
+                    <mat-card-content class="content-image" *ngIf="URL; then editarCategoria; else crearNuevoCategoria "  >
+                    </mat-card-content>
+                </mat-card>
+
+                <ng-template #crearNuevoCategoria>
+                    <input type="file" formControlName="file" accept="image/*" (change)="seleccionarImagen($event)" #imageInput/>
+                    <img  [src]=" imagenSelect || 'assets/image.png' " class="img-fluid" alt="No Image" (click)="imageInput.click()"/>
+                </ng-template>
+
+                <ng-template #editarCategoria>
+                    <input type="file" formControlName="file" accept="image/*" (change)="seleccionarImagen($event)" #imageInput/>                 
+                    <img  [src]=" imagenSelect || URL " class="img-fluid" alt="No Image" (click)="imageInput.click()"/>
+                                
+                </ng-template>
+
+            </div>
+   
+        </form>
+    </div>
+</mat-dialog-content>
+
+<!--{{userForm.status}} status-->
+
+<mat-dialog-actions *ngIf="URL; then editarCategorias;else crearNewCategoria">
+
+</mat-dialog-actions>
+
+<ng-template #crearNewCategoria class="btn-actions">
+    <button mat-button mat-dialog-close class="btn-actionsCancel">Cancelar</button>
+    <button
+    mat-raised-button
+    [mat-dialog-close]="true"
+    color="primary"
+    (click)="onSave()"
+    ckdFocusInitial
+    [disabled]="!categoriaForm.valid || !imgCategoriaForm.valid"
+    class="btn-actionsSave"
+    >Guardar</button>
+</ng-template>
+
+<ng-template #editarCategorias class="btn-actions">
+    <button mat-button mat-dialog-close class="btn-actionsCancel">Cancelar</button>
+    <button 
+    mat-raised-button
+    [mat-dialog-close]="true"
+    color="primary"
+    (click)="onSave()"
+    ckdFocusInitial
+    [disabled]="!categoriaForm.valid"
+     class="btn-actionsSave"
+   
+    >Guardar</button>
+</ng-template>

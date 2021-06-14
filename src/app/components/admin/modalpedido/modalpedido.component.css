@@ -1,0 +1,106 @@
+
+table{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 1rem; 
+    
+    table-layout: fixed;
+
+   
+ }
+ th,td{
+     overflow: hidden;
+     width: 50px;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+ }
+ .mat-column-idpedidoproducto {
+     flex: none;
+     width: 1%;
+ }
+
+ .mat-column-cantidad {
+     flex: none;
+     width: 1%;
+ }
+
+ .mat-column-precio_uni {
+     flex: none;
+     width: 1%;
+    
+ }
+
+ 
+.mat-column-precio_total{
+     flex: none;
+     width: 1%;
+ }
+ .mat-column-idproducto{
+     flex: none;
+     width: 1%;
+ }
+
+ 
+
+ .mat-column-nombre{
+     flex: none;
+     width: 3%;
+ }
+
+ .mat-column-descripcion{
+     flex: none;
+     width: 4%;
+ }
+ 
+
+ .search-div{
+     margin: 10px;
+ }
+ .search-form-field{
+     width: 30%;
+     margin-left: 2%;
+    
+     
+ 
+ }
+ .paginator{
+     width: 95%;
+ }
+
+ th.mat-sort-header-sorted{
+     color: black;
+ }
+
+ th.mat-header-cell{
+     background-color: coral;
+     color: rgb(94, 34, 206);
+    
+     font-weight: bold;
+     font-family: Arial;
+
+     text-align: left;
+     max-width: 300px;
+     
+ }
+
+
+ 
+
+ .table-button-row button{
+     margin: 12px;
+     
+ }
+ .detall-pedido{
+     font-size: x-large;
+     font-weight: bold;
+     font-family: 'Lucida Sans';
+     text-align: center;
+     font-style: normal;
+     color: blue;
+ }
+ .btn-cancel{
+     left: 45%;
+     top: auto;
+     background-color: rgb(43, 106, 201);
+     color: #ffffff;
+ }

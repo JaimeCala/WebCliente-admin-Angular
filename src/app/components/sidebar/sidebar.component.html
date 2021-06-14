@@ -1,0 +1,43 @@
+<mat-nav-list class="color-nav-list">
+    <a mat-list-item routerLink="/admin">
+        <mat-icon>insert_chart_outline</mat-icon>
+        <span class="nav-link">Principal</span>
+    </a>
+
+    <a mat-list-item routerLink="/admin/users">
+        <mat-icon>people</mat-icon>
+        <span class="nav-link">Usuario</span>
+    </a>
+
+    <a mat-list-item routerLink="/admin/categoria">
+            <mat-icon>people</mat-icon>
+            <span class="nav-link">Categoría</span>
+    
+    </a>
+    <a mat-list-item routerLink="/admin/producto">
+            <mat-icon>people</mat-icon>
+            <span class="nav-link">Producto</span>
+    
+    </a>
+
+    <a mat-list-item routerLink="/admin/proveedor">
+            <mat-icon>people</mat-icon>
+            <span class="nav-link">Proveedor</span>
+    
+    </a>
+    <a mat-list-item routerLink="/admin/pedido">
+            <mat-icon>people</mat-icon>
+            <span class="nav-link">Pedido</span>
+    
+    </a>
+
+    
+
+    <a mat-list-item (click)="onExit()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span class="nav-link">Salir</span>
+    </a>
+   
+</mat-nav-list>
+
+

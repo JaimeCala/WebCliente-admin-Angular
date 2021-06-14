@@ -1,0 +1,141 @@
+
+table{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 1rem; 
+    
+    table-layout: fixed;
+
+   
+ }
+ th,td{
+     overflow: hidden;
+     width: 50px;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+ }
+ .mat-column-idproducto {
+     flex: none;
+     width: 2%;
+ }
+
+ .mat-column-stock {
+     flex: none;
+     width: 1.5%;
+ }
+
+ .mat-column-minimo {
+     flex: none;
+     width: 1.5%;
+ }
+
+.mat-column-maximo{
+     flex: none;
+     width: 1.5%;
+ }
+ .mat-column-precio{
+     flex: none;
+     width: 1.5%;
+ }
+
+ .mat-column-disponible{
+     flex: none;
+     width: 1.5%;
+ }
+
+ .mat-column-estado{
+     flex: none;
+     width: 2%;
+ }
+
+ .mat-column-peso{
+     flex: none;
+     width: 1%;
+ }
+
+ .mat-column-valor{
+     flex: none;
+     width: 1.5%;
+ }
+ .mat-column-fecha{
+     flex: none;
+     width: 2%;
+ }
+ .mat-column-linkimgprodu{
+     flex: none;
+     width: 2%;
+ }
+.mat-column-vencimiento{
+     flex: none;
+     width: 2%;
+ }
+ 
+
+ .mat-column-idimgproducto{
+     flex: none;
+     width: 1%;
+ }
+
+ .mat-column-nombre{
+     flex: none;
+     width: 2%;
+ }
+
+ .mat-column-nombre{
+     flex: none;
+     width: 3%;
+ }
+ .mat-column-descripcion{
+     flex: none;
+     width: 10%;
+ }
+
+
+
+ .search-div{
+     margin: 10px;
+ }
+ .search-form-field{
+     width: 30%;
+     margin-left: 2%;
+    
+     
+ 
+ }
+ .paginator{
+     width: 95%;
+ }
+
+ th.mat-sort-header-sorted{
+     color: black;
+ }
+
+ th.mat-header-cell{
+     background-color: rgb(54, 190, 88);
+     color: rgb(94, 34, 206);
+    
+     font-weight: bold;
+     font-family: Arial;
+
+     text-align: left;
+     max-width: 300px;
+     
+ }
+
+ .button-yellow{
+     
+     background-color: rgb(19, 226, 233);
+ }
+ .button-rosado{
+     color: floralwhite;
+     background-color: rgb(224, 20, 163);
+     width: 15%;
+     left:  35px;
+    
+ }
+ 
+
+ .table-button-row button{
+     margin: 12px;
+     
+ }

@@ -1,0 +1,175 @@
+
+
+
+
+
+<h2 mat-dialog-title>{{data?.title}}</h2>
+<mat-dialog-content>
+    <div class="modal-form">
+        <form [formGroup]="userForm" >
+            <mat-form-field class="full-width-input">
+                <input formControlName="ci" matInput placeholder="Cedula Identidad" required/>
+                <mat-error *ngIf="checkField('ci')">
+                    {{getErrorMessage('ci')}}
+                </mat-error>
+            </mat-form-field>
+           
+
+            <mat-form-field class="full-width-input">
+                 <mat-label>Seleccione expedido</mat-label>
+                 <mat-select formControlName="expedido" required>
+                     <mat-option value="CH">CH</mat-option>
+                     <mat-option value="LP">LP</mat-option>
+                     <mat-option value="CB">CB</mat-option>
+                     <mat-option value="OR">OR</mat-option>
+                     <mat-option value="PT">PT</mat-option>
+                     <mat-option value="TJ">TJ</mat-option>
+                     <mat-option value="SC">SC</mat-option>
+                     <mat-option value="BE">BE</mat-option>
+                     <mat-option value="PD">PD</mat-option>
+                     <mat-option value="OTRO">OTRO</mat-option>
+          
+                 </mat-select>
+                 <mat-error *ngIf="checkField('expedido')">
+                    {{getErrorMessage('expedido')}}
+                 </mat-error>
+                 
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="nombre" matInput placeholder="Nombres" required/>
+                <mat-error *ngIf="checkField('nombre')">
+                    {{getErrorMessage('nombre')}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="paterno" matInput placeholder="Paterno" required/>
+                <mat-error *ngIf="checkField('paterno')">
+                    {{getErrorMessage('paterno')}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="materno" matInput placeholder="Materno" required/>
+                <mat-error *ngIf="checkField('materno')">
+                    {{getErrorMessage('materno')}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input  formControlName="email" matInput placeholder="Correo" (input)="pruebaKey()" required />
+                <mat-error *ngIf="checkField('email')">
+                    {{getErrorMessage('email')}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="celular" matInput placeholder="Celular" required/>
+                <mat-error *ngIf="checkField('celular')">
+                    {{getErrorMessage('celular')}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="direccion" matInput placeholder="Dirección" required/>
+                <mat-error *ngIf="checkField('direccion')">
+                    {{getErrorMessage('direccion')}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                 <mat-label>Seleccione sexo</mat-label>
+                 <mat-select formControlName="sexo" required>
+                     <mat-option value="Femenino">FEMENINO</mat-option>
+                     <mat-option value="Masculino">MASCULINO</mat-option>
+          
+                 </mat-select>
+                 <mat-error *ngIf="checkField('sexo')">
+                    {{getErrorMessage('sexo')}}
+                </mat-error>
+                 
+            </mat-form-field>
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="ciudad" matInput placeholder="Ciudad" required/>
+                <mat-error *ngIf="checkField('ciudad')">
+                    {{getErrorMessage('ciudad')}}
+                </mat-error>
+            </mat-form-field>
+
+            
+        <!--    <ng-container formGroupName="logins">
+
+                <mat-form-field class="full-width-input">
+                    <input formControlName="username" matInput placeholder="Usuario" [value]="username"  />
+              
+                </mat-form-field>
+
+
+                <mat-form-field class="full-width-input">
+                    <input formControlName="password" matInput placeholder="Contraseña" required/>
+                    <mat-error *ngIf="checkField('logins.password')">
+                        {{getErrorMessage('password')}}
+                    </mat-error>
+                </mat-form-field>
+
+            </ng-container>   --> 
+            
+            <mat-form-field class="full-width-input">
+                    <mat-label>Seleccione</mat-label>
+                        <mat-select formControlName="rol"  required>
+                            <!-- <mat-option value="ADMIN">ADMIN</mat-option>
+                            <mat-option value="VENDEDOR">VENDEDOR</mat-option>
+                            <mat-option value="GENERAL">GENERAL</mat-option>
+                            <mat-option value="REPARTIDOR">REPARTIDOR</mat-option>-->
+                            <mat-option *ngFor="let rol of myrole" [value]="rol.idrol">{{rol.nombre}}</mat-option>
+                
+                        </mat-select>
+                    <mat-error *ngIf="checkField('rol')">
+                        {{getErrorMessage('rol')}}
+                    </mat-error>
+                 
+            </mat-form-field>
+         
+        </form>
+
+
+    </div>
+    <div class="modal-form">
+        <form [formGroup]="loginForm">
+            <mat-form-field class="full-width-input" *ngIf="showUsernameField">
+                <input formControlName="username" matInput placeholder="Usuario" [value]="username"  />
+     
+            </mat-form-field>
+            <mat-form-field class="full-width-input" *ngIf="showPasswordField">
+                        <input formControlName="password" matInput placeholder="Contraseña" [type]="hide ? 'password':'text'" required/>
+                        <button mat-icon-button matSuffix (click)="!hide">
+                            <mat-icon>{{hide? "visibility_off":"visibility"}}</mat-icon>
+
+                        </button>
+                        <mat-error *ngIf="checkFieldLogin('password')">
+                            {{getErrorMessageLogin('password')}}
+                        </mat-error>
+            </mat-form-field>
+
+        </form>
+    </div>
+  
+</mat-dialog-content>
+
+<!--{{userForm.status}} status-->
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button 
+    mat-raised-button
+    [mat-dialog-close]="true"
+    color="primary"
+    (click)="onSave()"
+    ckdFocusInitial
+    [disabled]="!userForm.valid"
+    
+    
+    >Guardar</button>
+</mat-dialog-actions>

@@ -1,0 +1,127 @@
+
+table{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 1rem; 
+    
+    table-layout: fixed;
+
+   
+ }
+ th,td{
+     overflow: hidden;
+     width: 50px;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+ }
+ .mat-column-idpedido {
+     flex: none;
+     width: 1%;
+ }
+
+ .mat-column-comentario {
+     flex: none;
+     width: 4%;
+ }
+
+ .mat-column-direccion {
+     flex: none;
+     width: 6%;
+ }
+
+ 
+.mat-column-precio{
+     flex: none;
+     width: 1%;
+ }
+ .mat-column-estado{
+     flex: none;
+     width: 2%;
+ }
+
+ 
+
+ .mat-column-fecha{
+     flex: none;
+     width: 1%;
+ }
+
+ .mat-column-hora{
+     flex: none;
+     width: 1%;
+ }
+ 
+
+ .search-div{
+     margin: 10px;
+ }
+ .search-form-field{
+     width: 30%;
+     margin-left: 2%;
+    
+     
+ 
+ }
+ .paginator{
+     width: 95%;
+ }
+
+ th.mat-sort-header-sorted{
+     color: black;
+ }
+
+ th.mat-header-cell{
+     background-color: rgb(54, 190, 88);
+     color: rgb(94, 34, 206);
+    
+     font-weight: bold;
+     font-family: Arial;
+
+     text-align: left;
+     max-width: 300px;
+     
+ }
+
+ .button-yellow{
+     
+     border: none;
+     border-radius: 40px 10px ;
+     font-style: italic;
+     font-size: 18;
+     font-family: Verdana;
+     font-weight: bold;
+     color: rgb(32, 31, 31);
+     background-color: rgba(20, 130, 220, 0.781);
+ }
+ .color-estado{
+     
+     border-radius: 40px 40px 40px 40px ;
+     font-style: italic;
+     font-size: 18;
+     font-family: Verdana;
+     font-weight: bold;
+     color: rgb(32, 31, 31);
+     background-color: rgba(220, 20, 120, 0.781);
+ }
+ .color-estado:hover {
+     
+     border-style: outset;
+     color: rgb(212, 226, 80);
+ }
+ .button-yellow:hover{
+     border-style: outset;
+     color: rgb(212, 226, 80);
+ }
+ .button-rosado{
+     color: floralwhite;
+     background-color: rgb(224, 20, 163);
+     width: 15%;
+     left:  35px;
+    
+ }
+ 
+
+ .table-button-row button{
+     margin: 12px;
+     
+ }

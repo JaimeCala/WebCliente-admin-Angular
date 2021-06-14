@@ -1,0 +1,63 @@
+
+
+<h2 mat-dialog-title>{{data?.title}}</h2>
+<mat-dialog-content>
+    <div class="modal-form">
+        <form [formGroup]="proveedorForm" >
+       
+            <mat-form-field class="full-width-input">
+                <input formControlName="nombre" matInput placeholder="Nombres"   required/>
+                <mat-error *ngIf="checkField('nombre')">
+                    {{getErrorMessage('nombre')}}
+                </mat-error>
+            </mat-form-field>
+
+             <mat-form-field class="full-width-input">
+                <input formControlName="ci_nit" matInput placeholder="Ci/Nit"   required/>
+                <mat-error *ngIf="checkField('ci_nit')">
+                    {{getErrorMessage('ci_nit')}}
+                </mat-error>
+            </mat-form-field>
+
+             <mat-form-field class="full-width-input">
+                <input formControlName="telefono" matInput placeholder="Teléfono/Cel"   required/>
+                <mat-error *ngIf="checkField('telefono')">
+                    {{getErrorMessage('telefono')}}
+                </mat-error>
+            </mat-form-field>
+
+             <mat-form-field class="full-width-input">
+                <input formControlName="email" matInput placeholder="Correo"  required/>
+                <mat-error *ngIf="checkField('email')">
+                    {{getErrorMessage('email')}}
+                </mat-error>
+            </mat-form-field>
+
+             <mat-form-field class="full-width-input">
+                <input formControlName="direccion" matInput placeholder="Dirección"   required/>
+                <mat-error *ngIf="checkField('direccion')">
+                    {{getErrorMessage('direccion')}}
+                </mat-error>
+            </mat-form-field>
+
+        </form>
+    </div>
+  
+</mat-dialog-content>
+
+<!--{{userForm.status}} status-->
+
+<mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close >Cancelar</button>
+        <button
+        mat-raised-button
+        [mat-dialog-close]="true"
+        color="primary"
+        (click)="onSave()"
+        ckdFocusInitial
+        [disabled]="!proveedorForm.valid"
+        class="btn-actionsSave"
+        >Guardar</button>
+</mat-dialog-actions>
+
+

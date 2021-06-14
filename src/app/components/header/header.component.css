@@ -1,0 +1,10 @@
+.spacer{
+    flex: 1 1 auto;
+}
+a,button{
+    text-decoration: none;
+    color: #fff;
+}
+.color-toolbar{
+    background-color: rgb(114, 29, 194);
+}
