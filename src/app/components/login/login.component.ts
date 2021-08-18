@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { FormBuilder} from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { isRegExp } from 'util';
+//import { isRegExp } from 'util';
 
 
 @Component({
