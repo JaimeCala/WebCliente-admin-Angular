@@ -54,6 +54,7 @@ export class ModalcategoriaComponent implements OnInit {
   imgCategoriaForm = this.formBuilder.group(
   { 
           file:['',[Validators.required]],
+          categoria: ['',[]],
              
   },);
 
@@ -106,14 +107,25 @@ export class ModalcategoriaComponent implements OnInit {
     if(this.actionTODO===Action.NEW){
       //inserta categoria
       this.categoriaService.newCategoria(categoriaformValue).subscribe(res=>{
+
+
         console.log('nuevo', res);
+        //const idcategoria = res.idcategoria;
+
+            imgCategoriaformValue.categoria = res.idcategoria;
+              //inserta imgcategoria     
+            const formData = new FormData();
+            formData.append('file',this.file);
+            formData.append('categoria', imgCategoriaformValue.categoria);
+          
+           //const idcategoria = res.idcategoria
+            //formData.append('categoria',`${idcategoria}`);
+            this.imgCategoriaService.newImgCategoria( formData).subscribe(re=>{
+             
+            });
+
       });
-      //inserta imgcategoria     
-      const formData = new FormData();
-      formData.append('file',this.file);
-      this.imgCategoriaService.newImgCategoria(formData).subscribe(re=>{
-        console.log('nueva img',re ); 
-      });
+     
       //-----------refresh datasource--------//
       this.categoriaService.filter('Registro categoria img');
 

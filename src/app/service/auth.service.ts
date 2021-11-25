@@ -30,6 +30,9 @@ export class AuthService {
   get isAdmin(): Observable<string>{
     return this.role.asObservable();
   }
+  get isVendedor(): Observable<string>{
+    return this.role.asObservable();
+  }
 
   get userTokenValue(): string{
     return this.userToken.getValue();

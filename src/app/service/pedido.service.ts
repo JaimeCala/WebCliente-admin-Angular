@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { ClienteUsuario } from '../models/cliente.interface';
 import { Pedido } from '../models/pedido.interface';
 
 @Injectable({
@@ -29,6 +30,7 @@ export class PedidoService {
         .pipe(catchError(this.handlerError));
 
   }
+  
      
   newPedido(pedidos: Pedido): Observable<Pedido>{
 
@@ -43,6 +45,12 @@ export class PedidoService {
     .put<any>(`${environment.API_URL}/pedido/${pedidoId}`,null)
     .pipe(catchError(this.handlerError));
   }
+  updatePedidoEnviado(pedidoId: number): Observable<any>{
+    return this.http
+    .put<any>(`${environment.API_URL}/pedido/enviado/${pedidoId}`,null)
+    .pipe(catchError(this.handlerError));
+  }
+
 
   deletePedido(pedidoId: number): Observable<{}>{
       return this.http

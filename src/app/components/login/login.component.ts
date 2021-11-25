@@ -15,6 +15,9 @@ import { Subscription } from 'rxjs';
 export class LoginComponent implements OnInit {
 
  //para el ojo de password
+  showPasswordField = true;
+
+  //showUsernameField = true;
  hide = true;
 
   //loginForm: FormGroup;

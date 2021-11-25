@@ -20,9 +20,9 @@ export class UsersService {
     .pipe(catchError(this.handlerError));
   }
 
-  getUserId(userId: number): Observable<Users>{
+  getUserId(userId: number): Observable<UsersInsert[]>{
     return this.http
-        .get<any>(`${environment.API_URL}/user/${userId}`)
+        .get<UsersInsert[]>(`${environment.API_URL}/user/${userId}`)
         .pipe(catchError(this.handlerError));
 
   }

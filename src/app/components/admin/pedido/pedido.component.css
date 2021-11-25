@@ -16,39 +16,39 @@ table{
  }
  .mat-column-idpedido {
      flex: none;
-     width: 1%;
+     width: 3%;
  }
 
  .mat-column-comentario {
      flex: none;
-     width: 4%;
+     width: 20%;
  }
 
  .mat-column-direccion {
      flex: none;
-     width: 6%;
+     width: 20%;
  }
 
  
 .mat-column-precio{
      flex: none;
-     width: 1%;
+     width: 4%;
  }
  .mat-column-estado{
      flex: none;
-     width: 2%;
+     width: 5%;
  }
 
  
 
  .mat-column-fecha{
      flex: none;
-     width: 1%;
+     width: 8%;
  }
 
  .mat-column-hora{
      flex: none;
-     width: 1%;
+     width: 5%;
  }
  
 

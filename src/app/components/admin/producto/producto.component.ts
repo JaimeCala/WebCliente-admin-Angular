@@ -9,6 +9,21 @@ import { ProductoService } from 'src/app/service/producto.service';
 import { environment } from 'src/environments/environment';
 import { ModalproductoComponent } from '../modalproducto/modalproducto.component';
 
+
+
+
+import { PdfMakeWrapper, Txt,ITable, Table } from 'pdfmake-wrapper';
+//import { ITable } from 'pdfmake-wrapper/lib/interfaces';
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
+import { Producto } from '../../../models/producto.interface';
+
+
+PdfMakeWrapper.setFonts(pdfFonts);
+
+
+type TableRow = [ number, string, number ,number, Date];
+
+
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
@@ -98,7 +113,49 @@ export class ProductoComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public applyFilter=(value: string)=>{
     this.dataSource.filter = value.trim().toLocaleLowerCase();
-  } 
+  }
+  
+  //----------------------------------create pdf-----------
+  createPdf(){
+
+        const pdf = new PdfMakeWrapper();
+        
+        //const idpedido = this.data?.pedidos.idpedido;
+        //const totalprecio = this.data?.pedidos.precio;
+      this.productoService.getTodosProducto().subscribe((productos)=> {
+
+                        pdf.pageMargins([ 50, 60 ]);
+                        pdf.add('MICROMARKET HOME SERVICE');
+                        pdf.add('DIRECCIÓN: Zona Zenkata');
+                        pdf.add('\n');
+                        pdf.add(this.createTable(productos));
+                       
+                        
+
+                        pdf.create().open();
+      });
+       
+       
+  
+  }
+   createTable(datos: Producto[]): ITable{
+     [{}]
+     return new Table([
+       ['ID','NOMBRE','STOCK','PRECIO','VENCIMIENTO'],
+    
+       ...this.extractData(datos),
+     
+     ]).end;
+   }
+
+   
+
+   extractData(datos: Producto[]): TableRow[]{
+     
+     return datos.map(row =>[row.idproducto,row.nombre, row.stock,row.precio, row.vencimiento]);
+     
+     
+   }
 
 
 

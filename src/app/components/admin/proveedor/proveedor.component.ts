@@ -8,6 +8,20 @@ import { takeUntil } from 'rxjs/operators';
 import { ProveedorService } from 'src/app/service/proveedor.service';
 import { ModalproveedorComponent } from '../modalproveedor/modalproveedor.component';
 
+
+
+import { PdfMakeWrapper, Txt,ITable, Table } from 'pdfmake-wrapper';
+//import { ITable } from 'pdfmake-wrapper/lib/interfaces';
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
+import { Proveedor } from '../../../models/proveedor.interface';
+
+
+PdfMakeWrapper.setFonts(pdfFonts);
+
+//row.idproveedor, row.nombre, row.ci_nit, row.telefono,row.email, row.fecha, row.hora
+
+type TableRow = [ number, string, string ,string, string,Date,Date];
+
 @Component({
   selector: 'app-proveedor',
   templateUrl: './proveedor.component.html',
@@ -101,7 +115,50 @@ export class ProveedorComponent implements OnInit,AfterViewInit,OnDestroy {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   } 
 
+ //----------------------------------create pdf-----------
+  createPdf(){
 
+        const pdf = new PdfMakeWrapper();
+        new Txt('MICROMARKET HOME SERVICE').bold().fontSize(20).end;
+        //const idpedido = this.data?.pedidos.idpedido;
+        //const totalprecio = this.data?.pedidos.precio;
+      this.proveedorService.getTodosProveedor().subscribe((proveedores)=> {
+                        pdf.pageMargins([ 50, 60 ]);
+                        
+                        pdf.add('MICROMARKET HOME SERVICE');
+                        pdf.add('DIRECCIÓN: Zona Zenkata');
+                        
+                        pdf.add('\n');
+                        pdf.add(this.createTable(proveedores));
+                       
+                        
+
+                        pdf.create().open();
+      
+      });
+     
+       
+       
+  
+  }
+   createTable(datos: Proveedor[]): ITable{
+     [{}]
+     return new Table([
+       ['ID','NOMBRE','CI_NIT','TELÉFONO','EMAIL','FECHA','HORA'],
+    
+       ...this.extractData(datos),
+     
+     ]).end;
+   }
+
+   
+
+   extractData(datos: Proveedor[]): TableRow[]{
+     
+     return datos.map(row =>[row.idproveedor, row.nombre, row.ci_nit, row.telefono,row.email, row.fecha, row.hora]);
+     
+     
+   }
 
 
 }

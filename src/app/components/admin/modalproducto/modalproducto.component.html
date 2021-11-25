@@ -47,7 +47,7 @@
             </mat-form-field> --> 
             <mat-form-field class="full-width-input">
                 
-                <input formControlName="vencimiento" matInput placeholder="Elija fecha de vencimiento" [matDatepicker]="picker"  required/>
+                <input formControlName="vencimiento" matInput placeholder="Elija fecha de vencimiento" [matDatepicker]="picker"   required/>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <mat-error *ngIf="checkFieldProducto('vencimiento')">

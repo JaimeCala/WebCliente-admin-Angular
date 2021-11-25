@@ -64,6 +64,7 @@ export class ModalproveedorComponent implements OnInit {
 
 
   ngOnInit(): void {
+    //console.log("probando datos proveedor", this.data?.proveedores.idproveedor);
     //-------------------Para editar comprobar si hay ID------//
     if(this.data?.proveedores.hasOwnProperty('idproveedor')){
       this.actionTODO = Action.EDIT;

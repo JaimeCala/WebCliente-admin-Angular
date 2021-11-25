@@ -1,5 +1,10 @@
 <mat-toolbar  class="color-toolbar" >
-    <ng-container *ngIf="isAdmin === 'ADMIN'">
+    <ng-container *ngIf="isAdmin === 'ADMIN'  " >
+        <button mat-icon-button (click)="onToggleSidenav()">
+                <mat-icon>menu</mat-icon>
+        </button>
+    </ng-container>
+    <ng-container *ngIf="isVendedor === 'VENDEDOR'  " >
         <button mat-icon-button (click)="onToggleSidenav()">
                 <mat-icon>menu</mat-icon>
         </button>
@@ -8,6 +13,7 @@
     <span class="spacer"></span>
         <a *ngIf="!isLogged; else viewLogout" mat-button routerLink="/login">Iniciar Sesión</a>
         <a *ngIf="isAdmin === 'ADMIN'" mat-button routerLink="/admin">Administrador</a>
+        <a *ngIf="isVendedor === 'VENDEDOR'" mat-button routerLink="/admin">Vendedor</a>
     
 </mat-toolbar>
 

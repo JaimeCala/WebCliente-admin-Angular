@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { PedidoService } from 'src/app/service/pedido.service';
 import { ModalpedidoComponent } from '../modalpedido/modalpedido.component';
+import { ModalventaComponent } from '../modalventa/modalventa/modalventa.component';
 
 @Component({
   selector: 'app-pedido',
@@ -25,6 +26,7 @@ export class PedidoComponent implements OnInit, AfterViewInit, OnDestroy{
   displayedColumns: string[] = ['idpedido', 'comentario','direccion', 'precio', 'fecha','hora','estado','actions' ];
  
   dataSource = new MatTableDataSource();
+  dataSourceUsuario = new MatTableDataSource();
 
   private destroy$ = new Subject<any>();
   
@@ -50,7 +52,7 @@ export class PedidoComponent implements OnInit, AfterViewInit, OnDestroy{
      
      this.pedidoService.getTodosPedido().subscribe((pedidos)=> {
        this.dataSource.data = pedidos 
-       console.log("son las proveedores ", pedidos);
+       console.log("son las pedidos", pedidos);
        //this.listaUsuarios=users[0].logins,
        //this.listaUsuarios=users[0].rol,
        //console.log("lista logins", this.listaUsuarios ), 
@@ -70,12 +72,22 @@ export class PedidoComponent implements OnInit, AfterViewInit, OnDestroy{
   onOpenModal(pedidos={}): void{
     //console.log('user-->', users);
     this.dialogProducto.open(ModalpedidoComponent,{
-      height:'500px',
-      width: '900px',
+      height:'600px',
+      width: '1000px',
       hasBackdrop: false,
       data: {title: 'Nuevo pedido',pedidos},
     });
   }
+
+ /* onOpenModalVentas(pedidos={}): void{
+    //console.log('user-->', users);
+    this.dialogProducto.open(ModalventaComponent,{
+      height:'600px',
+      width: '1000px',
+      hasBackdrop: false,
+      data: {title: 'Nuevo pedido',pedidos},
+    });
+  }*/
 
   onDelete(pedidoId: number):void{
     if(window.confirm("Esta seguro de eliminar")){

@@ -80,12 +80,14 @@ export class ModalproductoComponent implements OnInit {
   imgProductoForm = this.formBuilder.group(
   { 
           file:['',[Validators.required]],
+          producto: ['',[] ],
              
   },);
 
   unidadProductoForm = this.formBuilder.group(
   { 
         valor: ['', [Validators.required]],
+        producto: ['',[] ],
   });
 
   /*categoriaForm = this.formBuilder.group(
@@ -115,6 +117,7 @@ export class ModalproductoComponent implements OnInit {
 
      //--------inicializa categoria----//;
     this.categoriaService.getTodosCategoria().subscribe((cate)=>{ this.myCategoria=cate});
+    
     //---------inicializa proveedor----//
     this.proveedorService.getTodosProveedor().subscribe((prove)=>{this.myProveedor=prove});
 
@@ -180,38 +183,47 @@ export class ModalproductoComponent implements OnInit {
     if(this.actionTODO===Action.NEW){
 
       //------------inserta producto------------------//
-      const fechaPro = formatDate(new Date(),'yyyy-MM-dd','en_US');
+      const fechaPro = formatDate(new Date(),'yyyy-MM-dd','en_ES');
       productoformValue.fecha = fechaPro;
+      productoformValue.vencimiento = formatDate(productoformValue.vencimiento, 'yyyy-MM-dd', 'en_ES');
       this.productoService.newProducto(productoformValue).subscribe(resproducto=>{
-        this.responseProducto = resproducto;
-        console.log('nuevo', resproducto);
+        //this.responseProducto = resproducto;
+        //console.log('nuevo', resproducto);
+
+            //-------------inserta imgproducto--------------//     
+            const formData = new FormData();
+            imgProductoformValue.producto = resproducto.idproducto;
+            formData.append('file',this.file);
+            formData.append( 'producto',imgProductoformValue.producto);
+
+            this.imgProductoService.newImgProductos(formData).subscribe(re=>{
+              
+            });
+
+            //---------------inserta unidadproducto------------//
+            unidadProductoformValue.producto = resproducto.idproducto;
+            this.unidadProductoService.newUnidadProductos(unidadProductoformValue).subscribe(res=>{
+              
+            });
+            
+
+            //---------------inserta compras----------------//
+            const fecha = formatDate(new Date(),'yyyy-MM-dd','en_ES');
+            const hora = formatDate(new Date(), 'hh:mm:ss','en_ES');
+            comprasformValue.fecha = fecha;
+            comprasformValue.hora = hora;
+            comprasformValue.producto = resproducto.idproducto;
+           
+            this.comprasService.newCompra(comprasformValue).subscribe(res=>{
+              console.log('nuevo', res);
+            });
+
+
       });
 
-      //-------------inserta imgproducto--------------//     
-      const formData = new FormData();
-      formData.append('file',this.file);
-      this.imgProductoService.newImgProductos(formData).subscribe(re=>{
-        console.log('nuevo',re ); 
-      });
+        
 
-      //---------------inserta unidadproducto------------//
-      this.unidadProductoService.newUnidadProductos(unidadProductoformValue).subscribe(res=>{
-        console.log('nuevo', res);
-      });
-       //inserta no es valido debe insertar a productos---
-      /*this.categoriaService.newCategoria(categoriaformValue).subscribe(res=>{
-        console.log('nuevo', res);
-      });*/
-
-      //---------------inserta compras----------------//
-      const fecha = formatDate(new Date(),'yyyy-MM-dd','en_US');
-      const hora = formatDate(new Date(), 'hh:mm:ss','en_US');
-      comprasformValue.fecha = fecha;
-      comprasformValue.hora = hora;
-      //comprasformValue.producto = this.responseProducto.idproducto;
-      this.comprasService.newCompra(comprasformValue).subscribe(res=>{
-        console.log('nuevo', res);
-      });
+     
      
 
 

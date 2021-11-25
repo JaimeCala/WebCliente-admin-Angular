@@ -143,9 +143,9 @@
      
             </mat-form-field>
             <mat-form-field class="full-width-input" *ngIf="showPasswordField">
-                        <input formControlName="password" matInput placeholder="Contraseña" [type]="hide ? 'password':'text'" required/>
-                        <button mat-icon-button matSuffix (click)="!hide">
-                            <mat-icon>{{hide? "visibility_off":"visibility"}}</mat-icon>
+                        <input formControlName="password" matInput placeholder="Contraseña" [type]=" hide ? 'password':'text'" required/>
+                        <button mat-icon-button matSuffix (click)="hide = !hide">
+                            <mat-icon>{{hide ? 'visibility_off':'visibility'}}</mat-icon>
 
                         </button>
                         <mat-error *ngIf="checkFieldLogin('password')">

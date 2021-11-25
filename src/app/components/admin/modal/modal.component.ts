@@ -65,7 +65,8 @@ export class ModalComponent implements OnInit {
               //estado: ['', [Validators.required]],
           password:['',[Validators.required, Validators.minLength(6)]],
           fecha: ['',[Validators.required]],
-          hora: ['',[Validators.required]]
+          hora: ['',[Validators.required]],
+          user: ['',[]]
    
   },);
 
@@ -99,8 +100,8 @@ export class ModalComponent implements OnInit {
 //----------------Boton guardar y actualizar usuario loggin---------------//
   onSave(): void{
 
-   const fecha = formatDate(new Date(),'yyyy-MM-dd','en_US');
-   const hora = formatDate(new Date(), 'hh:mm:ss','en_US');
+   const fecha = formatDate(new Date(),'yyyy-MM-dd','en_ES');
+   const hora = formatDate(new Date(), 'hh:mm:ss','en_ES');
  
     const userformValue = this.userForm.value;
     const loginformValue = this.loginForm.value;
@@ -110,16 +111,21 @@ export class ModalComponent implements OnInit {
       //inserta usuario
 
       this.usersService.newUser(userformValue).subscribe(res=>{
-        console.log('new', res);
-      });
+        //console.log('new', res);
 
-      //inserta login
-      loginformValue.fecha= fecha;
-      loginformValue.hora= hora;
-      
-      this.loginService.newLogin(loginformValue).subscribe(re=>{
-        console.log('new login',re ); 
+                  //inserta login
+                  loginformValue.fecha= fecha;
+                  loginformValue.hora= hora;
+                  loginformValue.user = res.idusuario;
+                  
+                  this.loginService.newLogin(loginformValue).subscribe(re=>{
+                    //console.log('new login',re ); 
+                  });
+       
+
       });
+              
+      
 
     }else{
         //-------------Actualizando con datos de api users realtions con login----//

@@ -11,12 +11,15 @@ import { MatInputModule} from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+import {  MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule} from '@angular/material/paginator';
 //import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDividerModule } from "@angular/material/divider";
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
+
 
 
 
@@ -38,14 +41,16 @@ const myModules = [
     MatPaginatorModule,
     //FormsModule,
     MatDatepickerModule,
-    MatNativeDateModule,
+    MatMomentDateModule,
+    MatDividerModule,
+    
     
   ];
 
 @NgModule({
     imports: [ ... myModules],
     exports: [ ... myModules],
-    //providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-US'}],
+    providers: [{provide: MAT_DATE_LOCALE, useValue: 'en-GB'}],
 })
 
 export class MaterialModule{}

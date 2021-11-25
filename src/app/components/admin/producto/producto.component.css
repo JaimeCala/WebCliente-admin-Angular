@@ -21,64 +21,64 @@ table{
 
  .mat-column-stock {
      flex: none;
-     width: 1.5%;
+     width: 3%;
  }
 
  .mat-column-minimo {
      flex: none;
-     width: 1.5%;
+     width: 4%;
  }
 
 .mat-column-maximo{
      flex: none;
-     width: 1.5%;
+     width: 4%;
  }
  .mat-column-precio{
      flex: none;
-     width: 1.5%;
+     width: 4%;
  }
 
  .mat-column-disponible{
      flex: none;
-     width: 1.5%;
+     width: 3%;
  }
 
  .mat-column-estado{
      flex: none;
-     width: 2%;
+     width: 4%;
  }
 
  .mat-column-peso{
      flex: none;
-     width: 1%;
+     width: 3%;
  }
 
  .mat-column-valor{
      flex: none;
-     width: 1.5%;
+     width: 4%;
  }
  .mat-column-fecha{
      flex: none;
-     width: 2%;
+     width: 6%;
  }
  .mat-column-linkimgprodu{
      flex: none;
-     width: 2%;
+     width: 4%;
  }
 .mat-column-vencimiento{
      flex: none;
-     width: 2%;
+     width: 7%;
  }
  
 
  .mat-column-idimgproducto{
      flex: none;
-     width: 1%;
+     width: 3%;
  }
 
  .mat-column-nombre{
      flex: none;
-     width: 2%;
+     width: 4%;
  }
 
  .mat-column-nombre{

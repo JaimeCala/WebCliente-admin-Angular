@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -25,10 +26,10 @@ export class ImgcategoriaService {
         .pipe(catchError(this.handlerError));
 
   }*/
-    newImgCategoria(imgcategorias: FormData): Observable<ImgCategoria>{
+    newImgCategoria( imgcategorias: FormData): Observable<ImgCategoria>{
 
     return this.http
-    .post<ImgCategoria>(`${environment.API_URL}/img-categoria/uploadImg`,imgcategorias )
+    .post<ImgCategoria>(`${environment.API_URL}/img-categoria/uploadImg`, imgcategorias )
     .pipe(catchError(this.handlerError));
 
   }

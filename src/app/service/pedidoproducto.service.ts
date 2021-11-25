@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { PedidoProducto } from '../models/pedidoproducto.interface';
+import { ClienteUsuario } from '../models/cliente.interface';
+import { PedidoProducto, PedidoProductoPdf } from '../models/pedidoproducto.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,25 @@ export class PedidoproductoService {
 
   getPedidoProductoId(pedidoId: number): Observable<PedidoProducto[]>{
     return this.http
-        .get<any[]>(`${environment.API_URL}/pedido-produ/${pedidoId}`)
+        .get<PedidoProducto[]>(`${environment.API_URL}/pedido-produ/${pedidoId}`)
+        .pipe(catchError(this.handlerError));
+
+  }
+  getPedidoProductoPdfId(pedidoId: number): Observable<PedidoProductoPdf[]>{
+    return this.http
+        .get<PedidoProductoPdf[]>(`${environment.API_URL}/pedido-produ/${pedidoId}`)
+        .pipe(catchError(this.handlerError));
+
+  }
+   getClienteUsuarioId(clienteId: number): Observable<ClienteUsuario[]>{
+    return this.http
+        .get<any>(`${environment.API_URL}/cliente/getclienteUsuario/${clienteId}`)
+        .pipe(catchError(this.handlerError));
+
+  }
+  getClienteUsuarioPdfId(clienteId: number): Observable<ClienteUsuario[]>{
+    return this.http
+        .get<any>(`${environment.API_URL}/cliente/getclienteUsuario/${clienteId}`)
         .pipe(catchError(this.handlerError));
 
   }
@@ -41,6 +60,11 @@ export class PedidoproductoService {
   updatePedidoProducto(pedidoproductoId: number, pedidoproducto: PedidoProducto): Observable<any>{
     return this.http
     .put<any>(`${environment.API_URL}/pedidoproducto/put/${pedidoproductoId}`,pedidoproducto)
+    .pipe(catchError(this.handlerError));
+  }
+  updatePedidoProductoStock( pedidoproducto: PedidoProducto[]): Observable<any[]>{
+    return this.http
+    .post<any[]>(`${environment.API_URL}/producto/restaStock`,pedidoproducto)
     .pipe(catchError(this.handlerError));
   }
 

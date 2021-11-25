@@ -16,24 +16,24 @@ table{
  }
  .mat-column-idpedidoproducto {
      flex: none;
-     width: 1%;
+     width: 4%;
  }
 
  .mat-column-cantidad {
      flex: none;
-     width: 1%;
+     width: 4%;
  }
 
  .mat-column-precio_uni {
      flex: none;
-     width: 1%;
+     width: 5%;
     
  }
 
  
 .mat-column-precio_total{
      flex: none;
-     width: 1%;
+     width: 5%;
  }
  .mat-column-idproducto{
      flex: none;
@@ -42,9 +42,9 @@ table{
 
  
 
- .mat-column-nombre{
+ .mat-column-productonombre{
      flex: none;
-     width: 3%;
+     width: 10%;
  }
 
  .mat-column-descripcion{

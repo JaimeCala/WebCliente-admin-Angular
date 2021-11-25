@@ -10,10 +10,13 @@ import { ModalcategoriaComponent } from './modalcategoria/modalcategoria.compone
 import { ModalproductoComponent } from './modalproducto/modalproducto.component';
 import { ModalproveedorComponent } from './modalproveedor/modalproveedor.component';
 import { ModalpedidoComponent } from './modalpedido/modalpedido.component';
+import { ModalventaComponent } from './modalventa/modalventa/modalventa.component';
+import { ModalcomprasComponent } from './modalcompras/modalcompras.component';
+
 
 
 @NgModule({
-  declarations: [AdminComponent, ModalComponent, ModalcategoriaComponent, ModalproductoComponent, ModalproveedorComponent, ModalpedidoComponent],
+  declarations: [AdminComponent, ModalComponent, ModalcategoriaComponent, ModalproductoComponent, ModalproveedorComponent, ModalpedidoComponent, ModalventaComponent, ModalcomprasComponent, ],
   imports: [
     CommonModule,
     AdminRoutingModule,

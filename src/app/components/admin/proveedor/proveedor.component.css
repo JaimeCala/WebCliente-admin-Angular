@@ -16,47 +16,47 @@ table{
  }
  .mat-column-idproveedor {
      flex: none;
-     width: 1%;
+     width: 2%;
  }
 
  .mat-column-nombre {
      flex: none;
-     width: 4%;
+     width: 8%;
  }
 
  .mat-column-ci_nit {
      flex: none;
-     width: 1%;
+     width: 8%;
  }
 
  
 .mat-column-telefono{
      flex: none;
-     width: 1%;
+     width: 7%;
  }
  .mat-column-estado{
      flex: none;
-     width: 1%;
+     width: 5%;
  }
 
  .mat-column-email{
      flex: none;
-     width: 3%;
+     width: 7%;
  }
 
  .mat-column-direccion{
      flex: none;
-     width: 4%;
+     width: 7%;
  }
 
  .mat-column-fecha{
      flex: none;
-     width: 1%;
+     width: 6%;
  }
 
  .mat-column-hora{
      flex: none;
-     width: 1%;
+     width: 6%;
  }
  
 

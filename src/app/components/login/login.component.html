@@ -21,8 +21,8 @@
                     <mat-label>Contraseña</mat-label>
                     <input  [type]="hide ? 'password' : 'text'" formControlName="password" matInput  required/>
                     
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
-                        <mat-icon>{{hide ? "visibility_off" : "visibility"}}</mat-icon>
+                    <button mat-icon-button matSuffix (click)="hide = !hide"  >
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                     <mat-error *ngIf="isValidField('password')">
                         {{getErrorMessage("password")}} 
@@ -31,7 +31,10 @@
            
             <button [disabled]="loginForm.invalid" type="submit" mat-raised-button color="primary">INGRESAR</button>
         </form>
+         
     </mat-card-content>
+   
 </mat-card>
+
 </div>
 

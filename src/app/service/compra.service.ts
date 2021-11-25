@@ -4,6 +4,7 @@ import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Compra } from '../models/producto.interface';
+import {  CompraPdf } from '../models/compras.interface';
 
 
 @Injectable({
@@ -16,16 +17,29 @@ export class CompraService {
 
   constructor(private http: HttpClient) { }
 
-  getTodosCompra(): Observable<Compra[]>{
+  getTodosCompra(): Observable<CompraPdf[]>{
     return this.http
-    .get<Compra[]>(`${environment.API_URL}/compra/compras`)
+    .get<CompraPdf[]>(`${environment.API_URL}/compra/compras`)
     .pipe(catchError(this.handlerError));
   }
   
 
-  getCompraId(compraID: number): Observable<Compra>{
+  getCompraId(compraID: number): Observable<CompraPdf>{
     return this.http
         .get<any>(`${environment.API_URL}/compra/${compraID}`)
+        .pipe(catchError(this.handlerError));
+
+  }
+  getTodosCompraReport(): Observable<CompraPdf[]>{
+    return this.http
+    .get<CompraPdf[]>(`${environment.API_URL}/compra/comprasReporte`)
+    .pipe(catchError(this.handlerError));
+  }
+  
+
+  getCompraReportId(compraID: number): Observable<CompraPdf[]>{
+    return this.http
+        .get<CompraPdf[]>(`${environment.API_URL}/compra/report/${compraID}`)
         .pipe(catchError(this.handlerError));
 
   }

@@ -45,28 +45,28 @@
       </ng-container>
 
       
-      <!-- Name Column -->
+      <!-- Name Column 
       <ng-container  matColumnDef="idproducto">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID <br> PRODUCTO </th>
         <td  mat-cell *matCellDef="let element"> {{element.producto.idproducto}} </td>
-      </ng-container>
+      </ng-container>-->
 
       
 
       
       <!-- Name Column -->
-      <ng-container  matColumnDef="nombre">
+      <ng-container  matColumnDef="productonombre">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE </th>
-        <td  mat-cell *matCellDef="let element"> {{element.producto.nombre}} </td>
+        <td  mat-cell *matCellDef="let element"> {{element.productonombre}} </td>
       </ng-container>
 
      
 
-      <!-- Name Column -->
+      <!-- Name Column 
       <ng-container  matColumnDef="descripcion">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> DESCRIPCIÓN </th>
         <td  mat-cell *matCellDef="let element"> {{element.producto.descripcion}} </td>
-      </ng-container>
+      </ng-container>-->
 
   <!-- Name Column 
       <ng-container  matColumnDef="longitud">
@@ -114,8 +114,161 @@
     <mat-paginator class="paginator" [pageSizeOptions]="[5,10,25,100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 
 
+
+<br>
+<br>
+<mat-divider>
+</mat-divider>
+<div class="detall-pedido">
+     <h1>DETALLES DE USUARIO</h1>
+</div>
+<!--------------------------------otra sección usuario------------------------------------------------------------------------------->
+   <table mat-table [dataSource]="dataSourceUsuario" matSort >
+
+
+      <!-- Position Column 
+      <ng-container matColumnDef="idusuario">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.idusuario} </td>
+      </ng-container>-->
+     
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="ci">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CI </th>
+        <td mat-cell *matCellDef="let element"> {{element.ci}} </td>
+      </ng-container>
+
+      <!-- Weight Column 
+      <ng-container matColumnDef="expedido">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><label>EXPEDIDO</label>  </th>
+        <td mat-cell *matCellDef="let element" class="center"> {{element.expedido}} </td>
+      </ng-container>-->
+
+   
+       
+      
+      <!-- Name Column -->
+      <ng-container  matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE </th>
+        <td  mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+      
+      <!-- Name Column -->
+      <ng-container  matColumnDef="paterno">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> PATERNO </th>
+        <td  mat-cell *matCellDef="let element"> {{element.paterno}} </td>
+      </ng-container>
+
+       <!-- Name Column -->
+      <ng-container  matColumnDef="materno">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> MATERNO </th>
+        <td  mat-cell *matCellDef="let element"> {{element.materno}} </td>
+      </ng-container>
+       <!-- Name Column -->
+      <ng-container  matColumnDef="celular">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> CELULAR </th>
+        <td  mat-cell *matCellDef="let element"> {{element.celular}} </td>
+      </ng-container>
+
+       <!-- Name Column -->
+      <ng-container  matColumnDef="direccion">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> DIRECCIÓN </th>
+        <td  mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+      </ng-container>
+
+  
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsUsuario"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsUsuario;"></tr>
+      
+    </table>
+
+
+
+<!-----------------------------------------------Seccion para insertar vendedor ventas repartidor-------------->
+
+<mat-dialog-content>
+    <div class="modal-form">
+        <form [formGroup]="ventaForm" >
+       
+            <mat-form-field class="full-width-input-medio">
+                <input formControlName="observacion" matInput placeholder="Observación"  />
+                <mat-error *ngIf="checkFieldVenta('observacion')">
+                    {{getErrorMessageVenta('observacion')}}
+                </mat-error>
+            </mat-form-field>
+   
+        </form>
+    </div>
+      
+     <div class="modal-form">
+        <form [formGroup]="vendedorForm" >
+       
+            
+
+            <mat-form-field class="full-width-input">
+                    <mat-label>Seleccione vendedor</mat-label>
+                        <mat-select formControlName="user"  required>
+                           
+                            <mat-option *ngFor="let vended of myVendedor" [value]="vended.idusuario">{{vended.nombre}}   {{vended.paterno}}</mat-option>
+                
+                        </mat-select>
+                    <mat-error *ngIf="checkFieldVendedor('user')">
+                        {{getErrorMessageVendedor('user')}}
+                    </mat-error>
+                 
+            </mat-form-field>
+
+            
+
+        </form>
+    </div>
+    <div class="modal-form">
+        <form [formGroup]="RepartidorForm" >
+       
+            
+
+            <mat-form-field class="full-width-input">
+                    <mat-label>Seleccione repartidor</mat-label>
+                        <mat-select formControlName="user"  required>
+                           
+                            <mat-option *ngFor="let repart of myRepartidor" [value]="repart.idusuario">{{repart.nombre }}   {{repart.paterno}}</mat-option>
+                
+                        </mat-select>
+                    <mat-error *ngIf="checkFieldRepartidor('user')">
+                        {{getErrorMessageRepartidor('user')}}
+                    </mat-error>
+                 
+            </mat-form-field>
+
+            
+
+        </form>
+    </div>
+
+
+    
+
+  
+</mat-dialog-content>
+
+<!--{{userForm.status}} status-->
+
 <mat-dialog-actions >
-        <button mat-button mat-dialog-close color="primary" class="btn-cancel">CERRAR</button>
+    <button mat-button  color="primary" (click)="createPdf()" class="btn-cancel">PDF</button>
+    <button mat-button mat-dialog-close class="btn-actionsCancel">Cancelar</button>
+    <button
+    mat-raised-button
+    [mat-dialog-close]="true"
+    color="primary"
+    (click)="onSave()"
+    ckdFocusInitial
+    [disabled]="!vendedorForm.valid  || !RepartidorForm "
+    class="btn-actionsSave"
+    >Guardar</button>
+        
     
 </mat-dialog-actions>
+
 

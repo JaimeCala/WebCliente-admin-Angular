@@ -10,8 +10,9 @@ import { UtilsService } from 'src/app/service/utils.service';
 export class SidebarComponent implements OnInit {
 
   constructor(private authService: AuthService , private utilsService: UtilsService) { }
-
+   links: any=[];
   ngOnInit(): void {
+    
   }
 
   onExit(){

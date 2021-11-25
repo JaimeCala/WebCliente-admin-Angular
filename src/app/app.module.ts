@@ -13,6 +13,7 @@ import { MaterialModule } from './material.module';
 import { SidebarModule } from './components/sidebar/sidebar.module';
 import { AdminInterceptor } from './interceptors/admin-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { PdfComponent } from './components/admin/pdf/pdf.component';
 
 //import { MatDatepickerModule} from '@angular/material/datepicker';
 //import { MatNativeDateModule } from '@angular/material/core';
@@ -25,7 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     //LoginComponent,
     //NavbarComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    //PdfComponent
   ],
   imports: [
     BrowserModule,

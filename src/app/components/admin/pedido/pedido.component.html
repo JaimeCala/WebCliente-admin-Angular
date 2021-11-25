@@ -70,19 +70,23 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> HORA </th>
         <td  mat-cell *matCellDef="let element"> {{element.hora}} </td>
       </ng-container>
+      <ng-container  matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO </th>
+        <td  mat-cell *matCellDef="let element"> {{element.estado}} </td>
+      </ng-container>
 
   
  
-      <!-- Name Column -->
-      <ng-container  matColumnDef="estado" *ngIf="">
+      <!-- Name Column
+      <ng-container  matColumnDef="estado" *ngIf=""> -->
         <!--<th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO </th>
         <td  mat-cell *matCellDef="let element" >
           <button mat-button mat-raised-button class="color-estado"> {{element.estado}} </button>
         </td>-->
 
-      </ng-container>
+    <!--  </ng-container>-->
 
-      <ng-template #estadoEspera>
+    <!--  <ng-template #estadoEspera>
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO </th>
         <td  mat-cell *matCellDef="let element" >
           <button mat-button mat-raised-button class="color-estado"> {{element.estado}} </button>
@@ -93,7 +97,7 @@
         <td  mat-cell *matCellDef="let element" >
           <button mat-button mat-raised-button class="color-estado"> {{element.estado}} </button>
         </td>
-      </ng-template>
+      </ng-template>-->
 
       
 
@@ -106,7 +110,8 @@
             <!--<button mat-raised-button  class="button-yellow" (click)="onOpenModal(element)">Editar</button>
             <button mat-flat-button color="warn" (click)="onDelete(element.idusuario)">Eliminar</button>-->
             <button mat-button mat-raised-button  class="button-yellow" (click)="onOpenModal(element)">Detalles</button>
-            <button mat-button mat-raised-button  color="warn" (click)="onDelete(element.idcategoria)">Eliminar</button>
+            <button mat-button mat-raised-button  color="warn" (click)="onDelete(element.idpedido)">Eliminar</button>
+          <!-- <button mat-button mat-raised-button  color="primary" (click)="onOpenModalVentas(element)">Enviar</button>--> 
           
           
           </div>

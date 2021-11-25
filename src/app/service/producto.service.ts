@@ -21,6 +21,13 @@ export class ProductoService {
     .get<Producto[]>(`${environment.API_URL}/producto/productos`)
     .pipe(catchError(this.handlerError));
   }
+
+
+  getTodosProductoVencimiento(): Observable<Producto[]>{
+    return this.http
+    .get<Producto[]>(`${environment.API_URL}/producto/productosVencimiento`)
+    .pipe(catchError(this.handlerError));
+  }
   
 
   getProductoId(imgNombre: string): Observable<Producto>{

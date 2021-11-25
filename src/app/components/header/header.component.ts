@@ -11,6 +11,7 @@ import { UtilsService } from 'src/app/service/utils.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAdmin = null;
+  isVendedor = null;
   isLogged = false;
 
   //private subscription: Subscription = new Subscription();
@@ -32,6 +33,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.isAdmin
             .pipe(takeUntil(this.destroy))        
             .subscribe((res)=> (this.isAdmin = res));
+    
+    this.authService.isVendedor
+            .pipe(takeUntil(this.destroy))        
+            .subscribe((res)=> (this.isVendedor = res));
      
   }
 
