@@ -3,7 +3,9 @@
 <mat-dialog-content>
     <div class="modal-form">
         <form [formGroup]="productoForm" >
-       
+
+
+
             <mat-form-field class="full-width-input-medio">
                 <input formControlName="nombre" matInput placeholder="Nombre"   required/>
                 <mat-error *ngIf="checkFieldProducto('nombre')">
@@ -44,9 +46,9 @@
                 <mat-error *ngIf="checkFieldProducto('vencimiento')">
                     {{getErrorMessageProducto('vencimiento')}}
                 </mat-error>
-            </mat-form-field> --> 
+            </mat-form-field> -->
             <mat-form-field class="full-width-input">
-                
+
                 <input formControlName="vencimiento" matInput placeholder="Elija fecha de vencimiento" [matDatepicker]="picker"   required/>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -74,7 +76,7 @@
                 </mat-error>
             </mat-form-field>
 
-            
+
 
             <mat-form-field class="full-width-input">
                 <input formControlName="peso" matInput placeholder="Peso"   required/>
@@ -86,21 +88,23 @@
             <mat-form-field class="full-width-input">
                     <mat-label>Seleccione categoría</mat-label>
                         <mat-select formControlName="categoria"  required>
-                           
+
                             <mat-option *ngFor="let cate of myCategoria" [value]="cate.idcategoria">{{cate.nombre}}</mat-option>
-                
+
                         </mat-select>
                     <mat-error *ngIf="checkFieldProducto('categoria')">
                         {{getErrorMessageProducto('categoria')}}
                     </mat-error>
-                 
+
             </mat-form-field>
+
+
 
         </form>
     </div>
       <div class="modal-form">
         <form [formGroup]="compraForm" >
-       
+
             <mat-form-field class="full-width-input">
                 <input formControlName="precio_compra_uni" matInput placeholder="Precio compra unidad"   required/>
                 <mat-error *ngIf="checkFieldCompras('precio_compra_uni')">
@@ -146,21 +150,21 @@
             <mat-form-field class="full-width-input">
                     <mat-label>Seleccione proveedor</mat-label>
                         <mat-select formControlName="proveedor"  required>
-                           
+
                             <mat-option *ngFor="let provee of myProveedor" [value]="provee.idproveedor">{{provee.nombre}}</mat-option>
-                
+
                         </mat-select>
                     <mat-error *ngIf="checkFieldCompras('proveedor')">
                         {{getErrorMessageCompras('proveedor')}}
                     </mat-error>
-                 
+
             </mat-form-field>
 
         </form>
     </div>
      <div class="modal-form">
         <form [formGroup]="unidadProductoForm" >
-       
+
             <mat-form-field class="full-width-input-unidad">
                 <mat-label>Seleccione unidad</mat-label>
                 <mat-select formControlName="valor"  class="unidadProducto"  required>
@@ -170,13 +174,13 @@
                     <mat-option value="ml">ml</mat-option>
                     <mat-option value="lb">lb</mat-option>
                 </mat-select>
-                
+
                 <mat-error *ngIf="checkFieldUnidadproducto('valor')">
                     {{getErrorMessageUnidadproducto('valor')}}
                 </mat-error>
             </mat-form-field>
 
-            
+
 
         </form>
     </div>
@@ -197,19 +201,19 @@
                 </ng-template>
 
                 <ng-template #editarProducto>
-                    <input type="file" formControlName="file" accept="image/*" (change)="seleccionarImagen($event)" #imageInput/>                 
+                    <input type="file" formControlName="file" accept="image/*" (change)="seleccionarImagen($event)" #imageInput/>
                     <img  [src]=" imagenSelect || URL " class="img-fluid" alt="No Image" (click)="imageInput.click()"/>
-                                
+
                 </ng-template>
 
             </div>
-   
+
         </form>
     </div>
 
-    
 
-  
+
+
 </mat-dialog-content>
 
 <!--{{userForm.status}} status-->
@@ -233,7 +237,7 @@
 
 <ng-template #editarProductos class="btn-actions">
     <button mat-button mat-dialog-close class="btn-actionsCancel">Cancelar</button>
-    <button 
+    <button
     mat-raised-button
     [mat-dialog-close]="true"
     color="primary"
@@ -241,6 +245,6 @@
     ckdFocusInitial
     [disabled]="!productoForm.valid ||  !unidadProductoForm || !compraForm"
      class="btn-actionsSave"
-   
+
     >Guardar</button>
 </ng-template>

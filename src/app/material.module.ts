@@ -18,12 +18,13 @@ import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDividerModule } from "@angular/material/divider";
-import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatCheckboxModule } from '@angular/material/checkbox'
 
 
 
 
-const myModules = [ 
+const myModules = [
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
@@ -35,7 +36,7 @@ const myModules = [
     //ReactiveFormsModule,
     MatTableModule,
     MatSortModule,
-    MatDialogModule, 
+    MatDialogModule,
     MatOptionModule,
     MatSelectModule,
     MatPaginatorModule,
@@ -43,8 +44,9 @@ const myModules = [
     MatDatepickerModule,
     MatMomentDateModule,
     MatDividerModule,
-    
-    
+    MatCheckboxModule,
+
+
   ];
 
 @NgModule({

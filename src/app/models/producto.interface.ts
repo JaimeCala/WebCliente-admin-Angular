@@ -12,12 +12,14 @@ export class Producto{
     estado: string;
     peso: number;
     fecha: string;
+    oferta: string;
+    porcentaje: number;
 
     imgproductos = new ImgProductos;
     unidadproductos = new UnidadProductos;
     categoria = new Categoria;
     compra = new Compra;
-    
+
 }
 
 export class ImgProductos{

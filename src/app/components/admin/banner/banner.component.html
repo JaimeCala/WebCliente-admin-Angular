@@ -1,0 +1,74 @@
+<!--{{dataSource.data | json}}-->
+
+
+    <div class="table-button-row">
+
+      <button mat-flat-button class="button-rosado" (click)="onOpenModal()">Crear Banner</button>
+      <mat-form-field appearance="outline" class="search-form-field" floatLabel="never">
+        <input matInput   placeholder="Buscar" autocomplete="off" (keyup)="applyFilter($event.target.value)"/>
+        <!--<button mat-button matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey" (click)="onSearchClear()">
+                <mat-icon>close</mat-icon>
+        </button>-->
+      </mat-form-field>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" matSort >
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="idbanner">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.idbanner}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombreimgbanner">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombreimgbanner }} </td>
+      </ng-container>
+
+
+       <!-- Name Column -->
+      <ng-container  matColumnDef="linkimgbanner">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> IMAGEN </th>
+        <td  mat-cell *matCellDef="let element">
+
+          <img [src]="URL+element.nombreimgbanner" style="width: 50px; height: 50px;"/>
+        </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> FECHA </th>
+        <td mat-cell *matCellDef="let element" class="center"> {{element.createdAt}} </td>
+      </ng-container>
+
+
+
+
+      <!-- Name Column -->
+      <ng-container  matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="actionCampo"> ACCIONES  </th>
+        <td  mat-cell *matCellDef="let element">
+          <div class="table-button-row">
+            <!--<button mat-raised-button  class="button-yellow" (click)="onOpenModal(element)">Editar</button>
+            <button mat-flat-button color="warn" (click)="onDelete(element.idusuario)">Eliminar</button>-->
+            <button mat-icon-button  class="button-yellow" (click)="onOpenModal(element)"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button  color="warn" (click)="onDelete(element.idcategoria)"><mat-icon>delete</mat-icon></button>
+
+
+          </div>
+
+        </td>
+
+
+
+
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator class="paginator" [pageSizeOptions]="[5,10,25,100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+

@@ -12,11 +12,13 @@ import { ModalproveedorComponent } from './modalproveedor/modalproveedor.compone
 import { ModalpedidoComponent } from './modalpedido/modalpedido.component';
 import { ModalventaComponent } from './modalventa/modalventa/modalventa.component';
 import { ModalcomprasComponent } from './modalcompras/modalcompras.component';
+import { ModalofertaComponent } from './modaloferta/modaloferta.component';
+import { ModalbannerComponent } from './modalbanner/modalbanner.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, ModalComponent, ModalcategoriaComponent, ModalproductoComponent, ModalproveedorComponent, ModalpedidoComponent, ModalventaComponent, ModalcomprasComponent, ],
+  declarations: [AdminComponent, ModalComponent, ModalcategoriaComponent, ModalproductoComponent, ModalproveedorComponent, ModalpedidoComponent, ModalventaComponent, ModalcomprasComponent, ModalofertaComponent, ModalbannerComponent, ],
   imports: [
     CommonModule,
     AdminRoutingModule,

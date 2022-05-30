@@ -13,17 +13,17 @@ table{
      text-overflow: ellipsis;
      white-space: nowrap;
  }
- .mat-column-idcategoria{
+ .mat-column-idbanner{
      flex: none;
      width: 2%;
  }
 
- .mat-column-idimgcategoria{
+ .mat-column-nombreimgbanner{
      flex: none;
-     width: 1%;
+     width: 10%;
  }
 
- .mat-column-nombre{
+ .mat-column-linkimgbanner{
      flex: none;
      width: 10%;
  }

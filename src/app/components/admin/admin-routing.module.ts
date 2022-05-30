@@ -13,7 +13,9 @@ const routes: Routes = [
  { path: 'roles', loadChildren: () => import('./roles/roles.module').then(m => m.RolesModule) },
  { path: 'compras', loadChildren: () => import('./compras/compras.module').then(m => m.ComprasModule) },
  { path: 'ventas', loadChildren: () => import('./ventas/ventas.module').then(m => m.VentasModule) },
- { path: 'masvendidos', loadChildren: () => import('./masvendidos/masvendidos.module').then(m => m.MasvendidosModule) }];
+ { path: 'masvendidos', loadChildren: () => import('./masvendidos/masvendidos.module').then(m => m.MasvendidosModule) },
+ { path: 'banner', loadChildren:()=> import('./banner/banner.module').then(m=>m.BannerModule) }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

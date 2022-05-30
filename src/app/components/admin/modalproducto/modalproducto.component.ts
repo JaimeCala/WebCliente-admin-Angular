@@ -30,7 +30,7 @@ enum Action {
   styleUrls: ['./modalproducto.component.css']
 })
 export class ModalproductoComponent implements OnInit {
- 
+
   actionTODO= Action.NEW;
   /*showPasswordField = true;
   showUsernameField = true;
@@ -40,7 +40,7 @@ export class ModalproductoComponent implements OnInit {
   imagenSelect: string | ArrayBuffer;
 
   URL:any;
-  
+
 
   private formBuilder: FormBuilder= new FormBuilder();
   responseProducto:any;
@@ -49,7 +49,7 @@ export class ModalproductoComponent implements OnInit {
   myCompra:any;
   fecha:Date;
   hora:Date;
-  
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private productoService: ProductoService,
@@ -57,12 +57,12 @@ export class ModalproductoComponent implements OnInit {
     private unidadProductoService: UnidadproductoService,
     private categoriaService: CategoriaService,
     private comprasService: CompraService,
-    private proveedorService: ProveedorService, 
-    
+    private proveedorService: ProveedorService,
+
     ) { }
 
   productoForm = this.formBuilder.group(
-  { 
+  {
         nombre: ['',[Validators.required]],
         descripcion: ['', [Validators.required]],
         stock: ['', [Validators.required]],
@@ -74,30 +74,31 @@ export class ModalproductoComponent implements OnInit {
         peso: ['', [Validators.required]],
         fecha: ['', ],
         categoria: ['', [Validators.required]],
-        
+
+
   });
 
   imgProductoForm = this.formBuilder.group(
-  { 
+  {
           file:['',[Validators.required]],
           producto: ['',[] ],
-             
+
   },);
 
   unidadProductoForm = this.formBuilder.group(
-  { 
+  {
         valor: ['', [Validators.required]],
         producto: ['',[] ],
   });
 
   /*categoriaForm = this.formBuilder.group(
-  { 
+  {
           file:['',[Validators.required]],
-             
+
   },);*/
 
   compraForm = this.formBuilder.group(
-  { 
+  {
         precio_compra_uni: ['',[Validators.required]],
         precio_compra_total: ['', [Validators.required]],
         tipo_comprobante: ['', [Validators.required]],
@@ -110,18 +111,18 @@ export class ModalproductoComponent implements OnInit {
         //producto: ['', ],
   });
 
- 
+
 
 
   ngOnInit(): void {
 
      //--------inicializa categoria----//;
     this.categoriaService.getTodosCategoria().subscribe((cate)=>{ this.myCategoria=cate});
-    
+
     //---------inicializa proveedor----//
     this.proveedorService.getTodosProveedor().subscribe((prove)=>{this.myProveedor=prove});
 
-    
+
     //-------------------Para editar comprobar si hay ID------//
     if(this.data?.productos.hasOwnProperty('idproducto')){
 
@@ -136,18 +137,18 @@ export class ModalproductoComponent implements OnInit {
               this.comprasService.getCompraId(idCompras).subscribe((compras)=>{
                       this.myCompra = compras
                     this.compraForm.patchValue({ proveedor: this.myCompra.proveedor.idproveedor});
-          
+
               });
-         
+
       }, 0);
       //setea imagen de categoria
       this.URL=`${environment.API_URL}/img-producto/`+this.data?.productos?.imgproductos[0].nombreimgprodu;
-      
-    
-     
+
+
+
     }
-   
-     
+
+
   }
 
 
@@ -161,17 +162,17 @@ export class ModalproductoComponent implements OnInit {
         reader.onload = e =>this.imagenSelect = reader.result;
         reader.readAsDataURL(this.file);
     }
-     
+
       //this.imgCategoriaForm.get('file').setValue(this.file);
   }
-  //---------------fin------------------//  
-  
+  //---------------fin------------------//
+
 //----------------Boton guardar y actualizar producto y imgproducto, unidadproducto, compras---------------//
   onSave(): void{
 
     //--inicializa fecha y hora actual--//
-   
- 
+
+
 
     const productoformValue = this.productoForm.value;
     const imgProductoformValue = this.imgProductoForm.value;
@@ -190,22 +191,22 @@ export class ModalproductoComponent implements OnInit {
         //this.responseProducto = resproducto;
         //console.log('nuevo', resproducto);
 
-            //-------------inserta imgproducto--------------//     
+            //-------------inserta imgproducto--------------//
             const formData = new FormData();
             imgProductoformValue.producto = resproducto.idproducto;
             formData.append('file',this.file);
             formData.append( 'producto',imgProductoformValue.producto);
 
             this.imgProductoService.newImgProductos(formData).subscribe(re=>{
-              
+
             });
 
             //---------------inserta unidadproducto------------//
             unidadProductoformValue.producto = resproducto.idproducto;
             this.unidadProductoService.newUnidadProductos(unidadProductoformValue).subscribe(res=>{
-              
+
             });
-            
+
 
             //---------------inserta compras----------------//
             const fecha = formatDate(new Date(),'yyyy-MM-dd','en_ES');
@@ -213,7 +214,7 @@ export class ModalproductoComponent implements OnInit {
             comprasformValue.fecha = fecha;
             comprasformValue.hora = hora;
             comprasformValue.producto = resproducto.idproducto;
-           
+
             this.comprasService.newCompra(comprasformValue).subscribe(res=>{
               console.log('nuevo', res);
             });
@@ -221,10 +222,10 @@ export class ModalproductoComponent implements OnInit {
 
       });
 
-        
 
-     
-     
+
+
+
 
 
     }else{
@@ -249,7 +250,7 @@ export class ModalproductoComponent implements OnInit {
           console.log('Actualizado imgproducto', res);
         });
 
-         
+
         this.unidadProductoService.updateUnidadProductos(unidadProductoId, unidadProductoformValue).subscribe(res=>{
           console.log('Actualizado Unidad producto',res);
         });
@@ -262,7 +263,7 @@ export class ModalproductoComponent implements OnInit {
         this.comprasService.updateCompra(compraId, formCompras).subscribe(res=>{
           console.log('Actualizado compras',res);
         });
-        
+
     }
         //-----------refresh datasource--------//
         this.productoService.filterProducto('Register');
@@ -270,13 +271,13 @@ export class ModalproductoComponent implements OnInit {
 
   }
 //-------------------Fin boton guardar , actualizar--------------------------------//
- 
+
 //----------------validacion para producto-----------------------------//
   isValidFieldProducto(field: string): boolean{
     //this.getErrorMessage(field);
     return (
-    (this.productoForm.get(field).touched || this.productoForm.get(field).dirty) && 
-    !this.productoForm.get(field).valid); 
+    (this.productoForm.get(field).touched || this.productoForm.get(field).dirty) &&
+    !this.productoForm.get(field).valid);
   }
 
   getErrorMessageProducto(field: string): void{
@@ -293,8 +294,8 @@ export class ModalproductoComponent implements OnInit {
       }
       return message;
 
-    
-    
+
+
 
   }
  checkFieldProducto(field: string): boolean{
@@ -308,8 +309,8 @@ export class ModalproductoComponent implements OnInit {
   isValidFieldImgproducto(field: string): boolean{
     //this.getErrorMessage(field);
     return (
-    (this.imgProductoForm.get(field).touched || this.imgProductoForm.get(field).dirty) && 
-    !this.imgProductoForm.get(field).valid); 
+    (this.imgProductoForm.get(field).touched || this.imgProductoForm.get(field).dirty) &&
+    !this.imgProductoForm.get(field).valid);
   }
 
   getErrorMessageImgproducto(field: string): void{
@@ -326,8 +327,8 @@ export class ModalproductoComponent implements OnInit {
       }
       return message;
 
-    
-    
+
+
 
   }
  checkFieldImgproducto(field: string): boolean{
@@ -339,8 +340,8 @@ export class ModalproductoComponent implements OnInit {
   isValidFieldUnidadproducto(field: string): boolean{
     //this.getErrorMessage(field);
     return (
-    (this.unidadProductoForm.get(field).touched || this.unidadProductoForm.get(field).dirty) && 
-    !this.unidadProductoForm.get(field).valid); 
+    (this.unidadProductoForm.get(field).touched || this.unidadProductoForm.get(field).dirty) &&
+    !this.unidadProductoForm.get(field).valid);
   }
 
   getErrorMessageUnidadproducto(field: string): void{
@@ -357,8 +358,8 @@ export class ModalproductoComponent implements OnInit {
       }
       return message;
 
-    
-    
+
+
 
   }
  checkFieldUnidadproducto(field: string): boolean{
@@ -371,8 +372,8 @@ export class ModalproductoComponent implements OnInit {
   isValidFieldCompras(field: string): boolean{
     //this.getErrorMessage(field);
     return (
-    (this.compraForm.get(field).touched || this.compraForm.get(field).dirty) && 
-    !this.compraForm.get(field).valid); 
+    (this.compraForm.get(field).touched || this.compraForm.get(field).dirty) &&
+    !this.compraForm.get(field).valid);
   }
 
   getErrorMessageCompras(field: string): void{
@@ -389,8 +390,8 @@ export class ModalproductoComponent implements OnInit {
       }
       return message;
 
-    
-    
+
+
 
   }
  checkFieldCompras(field: string): boolean{
@@ -406,9 +407,9 @@ export class ModalproductoComponent implements OnInit {
 
   //------------------Inicializando datos para editar al formulario-------------//
   private pathForData():void{
-   
+
     this.productoForm.patchValue({
-  
+
       nombre: this.data?.productos?.nombre,
       descripcion: this.data?.productos?.descripcion,
       stock: this.data?.productos?.stock,
@@ -419,37 +420,37 @@ export class ModalproductoComponent implements OnInit {
       disponible: this.data?.productos?.disponible,
       peso: this.data?.productos?.peso,
       categoria: this.data?.productos?.categoria.idcategoria,
-     
-   
+
+
     });
     this.imgProductoForm.patchValue({
 
        //file: this.data?.categorias?.imgcategorias[0].nombreimgcategoria,
        //file: this.imagenSelect=URL+this.data?.categorias?.imgcategorias[0].nombreimgcategoria,
        //UR: URL+this.data?.categorias?.imgcategorias[0].nombreimgcategoria,
-    
+
     });
 
     this.unidadProductoForm.patchValue({
-  
+
       valor: this.data?.productos?.unidadproductos[0].valor,
-   
+
     });
     this.compraForm.patchValue({
-   
+
       precio_compra_uni: this.data?.productos?.compra[0].precio_compra_uni,
       precio_compra_total: this.data?.productos?.compra[0].precio_compra_total,
       tipo_comprobante: this.data?.productos?.compra[0].tipo_comprobante,
       num_comprobante: this.data?.productos?.compra[0].num_comprobante,
       cantidad_ingreso: this.data?.productos?.compra[0].cantidad_ingreso,
       observacion: this.data?.productos?.compra[0].observacion,
-      
-      
 
-       
-    
+
+
+
+
     });
-   
+
   }
 
   //-----------input categoria a mayuscula----//

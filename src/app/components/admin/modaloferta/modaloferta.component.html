@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>{{data?.title}}</h2>
+<mat-dialog-content>
+    <div class="modal-form">
+        <form [formGroup]="productoForm" >
+
+
+
+
+
+            <mat-form-field class="full-width-input">
+                <mat-label>Seleccione disponible</mat-label>
+                <mat-select formControlName="oferta"   required>
+                    <mat-option value="SI">SI</mat-option>
+                    <mat-option value="NO">NO</mat-option>
+                </mat-select>
+            <mat-error *ngIf="checkFieldProducto('oferta')">
+                    {{getErrorMessageProducto('oferta')}}
+                </mat-error>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="full-width-input">
+                <input formControlName="porcentaje" matInput placeholder="Porcentaje"   required/>
+                <mat-error *ngIf="checkFieldProducto('porcentaje')">
+                    {{getErrorMessageProducto('porcentaje')}}
+                </mat-error>
+            </mat-form-field>
+
+
+
+
+
+        </form>
+    </div>
+
+
+
+
+
+</mat-dialog-content>
+
+<!--{{userForm.status}} status-->
+
+<mat-dialog-actions >
+  <button mat-button mat-dialog-close class="btn-actionsCancel">Cancelar</button>
+    <button
+    mat-raised-button
+    [mat-dialog-close]="true"
+    color="primary"
+    (click)="onSave()"
+    ckdFocusInitial
+    [disabled]="!productoForm.valid "
+    class="btn-actionsSave"
+    >Guardar</button>
+
+</mat-dialog-actions>
+
+
+

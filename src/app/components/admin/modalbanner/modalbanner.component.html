@@ -1,0 +1,63 @@
+<h2 mat-dialog-title>{{data?.title}}</h2>
+<mat-dialog-content>
+
+    <div class="modal-form">
+        <form [formGroup]="imgBannerForm">
+            <div class="container-input-file">
+                <mat-card>
+                    <div class="header-image">
+                            <mat-card-header>Inserta imagen</mat-card-header>
+                    </div>
+                    <mat-card-content class="content-image" *ngIf="URL; then editarImgBanner; else crearNuevoBanner "  >
+                    </mat-card-content>
+                </mat-card>
+
+                <ng-template #crearNuevoBanner>
+                    <input type="file" formControlName="file" accept="image/*" (change)="seleccionarImagen($event)" #imageInput/>
+                    <img  [src]=" imagenSelect || 'assets/image.png' " class="img-fluid" alt="No Image" (click)="imageInput.click()"/>
+                </ng-template>
+
+                <ng-template #editarImgBanner>
+                    <input type="file" formControlName="file" accept="image/*" (change)="seleccionarImagen($event)" #imageInput/>
+                    <img  [src]=" imagenSelect || URL " class="img-fluid" alt="No Image" (click)="imageInput.click()"/>
+
+                </ng-template>
+
+            </div>
+
+        </form>
+    </div>
+</mat-dialog-content>
+
+<!--{{userForm.status}} status-->
+
+<mat-dialog-actions *ngIf="URL; then editarBanner;else crearNewBanner">
+
+</mat-dialog-actions>
+
+<ng-template #crearNewBanner class="btn-actions">
+    <button mat-button mat-dialog-close class="btn-actionsCancel">Cancelar</button>
+    <button
+    mat-raised-button
+    [mat-dialog-close]="true"
+    color="primary"
+    (click)="onSave()"
+    ckdFocusInitial
+    [disabled]="!imgBannerForm.valid"
+    class="btn-actionsSave"
+    >Guardar</button>
+</ng-template>
+
+<ng-template #editarBanner class="btn-actions">
+    <button mat-button mat-dialog-close class="btn-actionsCancel">Cancelar</button>
+    <button
+    mat-raised-button
+    [mat-dialog-close]="true"
+    color="primary"
+    (click)="onSave()"
+    ckdFocusInitial
+    [disabled]="!imgBannerForm.valid"
+     class="btn-actionsSave"
+
+    >Guardar</button>
+</ng-template>

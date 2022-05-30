@@ -16,6 +16,7 @@ import { PdfMakeWrapper, Txt,ITable, Table } from 'pdfmake-wrapper';
 //import { ITable } from 'pdfmake-wrapper/lib/interfaces';
 import * as pdfFonts from "pdfmake/build/vfs_fonts";
 import { Producto } from '../../../models/producto.interface';
+import { ModalofertaComponent } from '../modaloferta/modaloferta.component';
 
 
 PdfMakeWrapper.setFonts(pdfFonts);
@@ -31,16 +32,16 @@ type TableRow = [ number, string, number ,number, Date];
 })
 export class ProductoComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  
+
   listaCategoria: any=[];
   URL=`${environment.API_URL}/img-producto/`;
-  
-  displayedColumns: string[] = ['idproducto', 'nombre', 'descripcion', 'stock','minimo','maximo','vencimiento', 'precio', 'disponible', 'estado', 'fecha', 'linkimgprodu','peso', 'valor','nombre_categoria','actions' ];
- 
+
+  displayedColumns: string[] = ['idproducto', 'nombre', 'descripcion', 'stock','minimo','maximo','vencimiento', 'precio', 'disponible', 'estado', 'fecha', 'linkimgprodu','peso', 'valor','nombre_categoria','oferta','actions' ];
+
   dataSource = new MatTableDataSource();
 
   private destroy$ = new Subject<any>();
-  
+
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -60,17 +61,17 @@ export class ProductoComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ObtenerListaProducto(){
-     
+
      this.productoService.getTodosProducto().subscribe((productos)=> {
-       this.dataSource.data = productos 
+       this.dataSource.data = productos
        console.log("son las productos ", productos);
        //this.listaUsuarios=users[0].logins,
        //this.listaUsuarios=users[0].rol,
-       //console.log("lista logins", this.listaUsuarios ), 
+       //console.log("lista logins", this.listaUsuarios ),
        //console.log(this.dataSource.data);
        this.dataSource.paginator = this.paginator;
       });
-     
+
   }
 
 
@@ -85,6 +86,15 @@ export class ProductoComponent implements OnInit, AfterViewInit, OnDestroy {
       width: '1000px',
       hasBackdrop: false,
       data: {title: 'Nuevo producto',productos},
+    });
+  }
+    onOpenModalOferta(productos={}): void{
+    //console.log('user-->', users);
+    this.dialogProducto.open(ModalofertaComponent,{
+      height:'300px',
+      width: '400px',
+      hasBackdrop: false,
+      data: {title: 'Oferta con descuento',productos},
     });
   }
 
@@ -103,7 +113,7 @@ export class ProductoComponent implements OnInit, AfterViewInit, OnDestroy {
     this.destroy$.next({});
     this.destroy$.complete();
   }
-  
+
   /*onSearchClear(){
     this.searchKey="";
     this.applyFilter(this.searchKey);
@@ -114,12 +124,12 @@ export class ProductoComponent implements OnInit, AfterViewInit, OnDestroy {
   public applyFilter=(value: string)=>{
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
-  
+
   //----------------------------------create pdf-----------
   createPdf(){
 
         const pdf = new PdfMakeWrapper();
-        
+
         //const idpedido = this.data?.pedidos.idpedido;
         //const totalprecio = this.data?.pedidos.precio;
       this.productoService.getTodosProducto().subscribe((productos)=> {
@@ -129,32 +139,32 @@ export class ProductoComponent implements OnInit, AfterViewInit, OnDestroy {
                         pdf.add('DIRECCIÓN: Zona Zenkata');
                         pdf.add('\n');
                         pdf.add(this.createTable(productos));
-                       
-                        
+
+
 
                         pdf.create().open();
       });
-       
-       
-  
+
+
+
   }
    createTable(datos: Producto[]): ITable{
      [{}]
      return new Table([
        ['ID','NOMBRE','STOCK','PRECIO','VENCIMIENTO'],
-    
+
        ...this.extractData(datos),
-     
+
      ]).end;
    }
 
-   
+
 
    extractData(datos: Producto[]): TableRow[]{
-     
+
      return datos.map(row =>[row.idproducto,row.nombre, row.stock,row.precio, row.vencimiento]);
-     
-     
+
+
    }
 
 
