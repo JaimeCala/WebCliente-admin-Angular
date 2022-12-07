@@ -15,13 +15,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
+
    /* let myMoment: moment.Moment = moment("someDate");
-    const fecha=  moment('2010-10-20').isBefore('2010-10-21'); 
+    const fecha=  moment('2010-10-20').isBefore('2010-10-21');
     console.log("probando fecha con moment",fecha);*/
 
     //---------api para verificar fecha de vencimiento--
-    this.productoService.getTodosProductoVencimiento().subscribe((productos)=> {
+    /*this.productoService.getTodosProductoVencimiento().subscribe((productos)=> {
 
             //-----sweet aler-----
           Swal.fire({
@@ -29,18 +29,18 @@ export class HomeComponent implements OnInit {
             text: `'  Serie de productos por vencer'${productos}`,
             icon: 'warning',
             showCloseButton: true,
-            
+
           }).then(result => {
             if(result.value){
               //console.log('desde sweet');
 
             }
           });
-      
-      });
 
-    
-    
+      });*/
+
+
+
   }
 
 }

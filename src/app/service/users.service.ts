@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 import { Login } from '../models/login.interface';
 import { UsersInsert } from '../models/userInsert.interface';
 import { Users } from '../models/userList.interface';
@@ -13,6 +14,8 @@ import { Users } from '../models/userList.interface';
 export class UsersService {
 
   constructor(private http: HttpClient) { }
+
+  private _listenersUser = new Subject<any>();
 
   getTodosUser(): Observable<Users[]>{
     return this.http
@@ -49,9 +52,9 @@ export class UsersService {
   }
 
 
-  
 
-  //de la tabla roles para iterar 
+
+  //de la tabla roles para iterar
   getRoles(): Observable<Login[]>{
     return this.http
     .get<Login[]>(`${environment.API_URL}/rol/roles`)
@@ -63,8 +66,31 @@ export class UsersService {
       if(error){
         errorMessage = `Error ${error.message}`;
       }
-      window.alert(errorMessage);
+       Swal.fire({
+      title: 'Error',
+      text: 'No se puede realizar la acción',
+      icon: 'warning',
+      //showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Cerrar',
+    }).then(result =>{
+      if(result.value){
+
+
+      }
+      errorMessage
+
+    })
+      //window.alert(errorMessage);
       return throwError(errorMessage);
 
+  }
+  //------resfresh datasource----//
+  listenUser():Observable<any>{
+    return this._listenersUser.asObservable();
+  }
+  filterUser(filterUser: string){
+    this._listenersUser.next(filterUser);
   }
 }

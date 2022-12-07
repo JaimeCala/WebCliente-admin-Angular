@@ -1,4 +1,4 @@
-export type Roles = 'ADMIN'|'VENDEDOR' | 'GENERAL' | 'REPARTIDOR';
+export type Roles = 'ADMIN'|'VENDEDOR' | 'CLIENTE' | 'REPARTIDOR';
 
 export interface User {
     username: string;
@@ -11,4 +11,5 @@ export interface UserResponse{
     token: string;
     //userId:number;
     roles: Roles;
+    idusuario: number;
 }

@@ -8,5 +8,6 @@ export interface Pedido {
     fecha: Date;
     hora: Date;
     estado: string;
- 
+    nombrefilepdf: string;
+
 }

@@ -24,7 +24,7 @@ enum Action {
 })
 export class ModalproveedorComponent implements OnInit {
 
- 
+
   actionTODO= Action.NEW;
   /*showPasswordField = true;
   showUsernameField = true;
@@ -32,35 +32,35 @@ export class ModalproveedorComponent implements OnInit {
 
   fecha:Date;
   hora:Date;
-  
+
   private isValidEmail: any = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
-  
+
 
   private formBuilder: FormBuilder= new FormBuilder();
- 
-  
+
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private proveedorService: ProveedorService, 
-    
+    private proveedorService: ProveedorService,
+
        ) { }
 
   proveedorForm = this.formBuilder.group(
-  { 
- 
+  {
+
         nombre: ['', [Validators.required]],
         ci_nit: ['', [Validators.required]],
         telefono: ['', [Validators.required]],
         //estado: ['',[Validators.required]],
         email: ['',[Validators.required, Validators.pattern(this.isValidEmail)]],
-        
+
         direccion: ['', [Validators.required]],
         fecha: ['', ],
         hora: ['', ],
-       
+
   });
 
- 
+
 
 
   ngOnInit(): void {
@@ -73,24 +73,24 @@ export class ModalproveedorComponent implements OnInit {
       setTimeout(() => {
         this.pathForData();
       }, 0);
-     
-     
+
+
     }
-   
-     
+
+
   }
 
 
-  
+
 //----------------Boton guardar y actualizar categoria y imgcategoria---------------//
   onSave(): void{
 
-    const fecha = formatDate(new Date(),'yyyy-MM-dd','en_US');
-    const hora = formatDate(new Date(), 'hh:mm:ss','en_US');
+    const fecha = formatDate(new Date(),'yyyy-MM-dd','en_ES');
+    const hora = formatDate(new Date(), 'hh:mm:ss','en_ES');
 
     const proveedorformValue = this.proveedorForm.value;
-    
-   
+
+
     if(this.actionTODO===Action.NEW){
       //inserta proveedor
 
@@ -99,10 +99,10 @@ export class ModalproveedorComponent implements OnInit {
 
       this.proveedorService.newProveedor(proveedorformValue).subscribe(res=>{
         //console.log('Nuevo proveedor', res);
+        //-----------refresh datasource--------//
+        this.proveedorService.filterProveedor('New proveedor');
       });
-      
-      //-----------refresh datasource--------//
-      this.proveedorService.filterProveedor('New proveedor');
+
 
     }else{
 
@@ -111,26 +111,26 @@ export class ModalproveedorComponent implements OnInit {
 
         //----creamos otro objet para eliminar los campos que no se enviará--//
         let formProveed= Object.assign({},this.proveedorForm.value);
-        
+
         delete formProveed.fecha;
         delete formProveed.hora;
-        
+
         this.proveedorService.updateProveedor(proveedorId, formProveed).subscribe(res=>{
           console.log('Actualizado categoria',res);
+          //-----------refresh datasource--------//
+          this.proveedorService.filterProveedor('Update Registro proveedores....');
         });
 
-        //-----------refresh datasource--------//
-        this.proveedorService.filterProveedor('Update Registro proveedores....');
     }
   }
 //-------------------Fin boton guardar , actualizar--------------------------------//
- 
+
 //----------------validacion para categoria-----------------------------//
   isValidField(field: string): boolean{
     //this.getErrorMessage(field);
     return (
-    (this.proveedorForm.get(field).touched || this.proveedorForm.get(field).dirty) && 
-    !this.proveedorForm.get(field).valid); 
+    (this.proveedorForm.get(field).touched || this.proveedorForm.get(field).dirty) &&
+    !this.proveedorForm.get(field).valid);
   }
 
   getErrorMessage(field: string): void{
@@ -147,8 +147,8 @@ export class ModalproveedorComponent implements OnInit {
       }
       return message;
 
-    
-    
+
+
 
   }
  checkField(field: string): boolean{
@@ -157,24 +157,24 @@ export class ModalproveedorComponent implements OnInit {
 
   //----------------------------------fin validación de proveedor formulario------------------//
 
-  
+
   //------------------Inicializando datos para editar al formulario-------------//
   private pathForData():void{
-   
+
     this.proveedorForm.patchValue({
-  
+
       nombre: this.data?.proveedores?.nombre,
       ci_nit: this.data?.proveedores?.ci_nit,
       telefono: this.data?.proveedores?.telefono,
       email: this.data?.proveedores?.email,
       direccion: this.data?.proveedores?.direccion,
-   
+
     });
-   
-   
+
+
   }
 
-  
+
 
 
 }

@@ -21,22 +21,22 @@ export class LoginComponent implements OnInit {
  hide = true;
 
   //loginForm: FormGroup;
-  
+
   private isValidEmail: any = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
-  
+
   private subscription: Subscription = new Subscription();
-  
+
   loginForm = this.formBuilder.group(
    { username: ['',[Validators.required, Validators.pattern(this.isValidEmail)]],
     password:['',[Validators.required, Validators.minLength(6)]],
   });
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router) { }
 
   ngOnInit(): void {
-   
+
   }
 
   ngOnDestroy(): void{
@@ -48,16 +48,16 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid){
       return;
     }
-    
+
     const formvalue = this.loginForm.value;
     this.subscription.add(
       this.authService.login(formvalue).subscribe((res)=>{
         if(res){
-          this.router.navigate(['']);
-          
+          this.router.navigate(['/admin']);
+
         }
       })
-    ); 
+    );
   }
 
   getErrorMessage(field: string): string{
@@ -77,11 +77,11 @@ export class LoginComponent implements OnInit {
   }
   isValidField(field: string): boolean{
     return (
-    (this.loginForm.get(field).touched || this.loginForm.get(field).dirty) && 
-    !this.loginForm.get(field).valid); 
+    (this.loginForm.get(field).touched || this.loginForm.get(field).dirty) &&
+    !this.loginForm.get(field).valid);
   }
-  
-  
-  
+
+
+
 }
 

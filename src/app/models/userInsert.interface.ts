@@ -12,7 +12,8 @@ export class UsersInsert {
     ciudad: string;
     estado: string;
     rol: number;
+    message?: string;
     //logins= new Logins;
     //rol= new Rol;
-    
+
 }

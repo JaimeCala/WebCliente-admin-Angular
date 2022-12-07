@@ -7,14 +7,14 @@
 
 
             <mat-form-field class="full-width-input-medio">
-                <input formControlName="nombre" matInput placeholder="Nombre"   required/>
+                <input formControlName="nombre" matInput placeholder="Nombre" oninput="this.value=this.value.toUpperCase()"  required/>
                 <mat-error *ngIf="checkFieldProducto('nombre')">
                     {{getErrorMessageProducto('nombre')}}
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width-input-medio">
-                <input formControlName="descripcion" matInput placeholder="Descripcion"   required/>
+                <input formControlName="descripcion" matInput placeholder="Descripcion" oninput="this.value=this.value.toUpperCase()"  required/>
                 <mat-error *ngIf="checkFieldProducto('descripcion')">
                     {{getErrorMessageProducto('descripcion')}}
                 </mat-error>
@@ -34,12 +34,12 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="full-width-input">
+            <!--<mat-form-field class="full-width-input">
                 <input formControlName="maximo" matInput placeholder="Máximo"   required/>
                 <mat-error *ngIf="checkFieldProducto('maximo')">
                     {{getErrorMessageProducto('maximo')}}
                 </mat-error>
-            </mat-form-field>
+            </mat-form-field>-->
 
         <!--  <mat-form-field class="full-width-input">
                 <input formControlName="vencimiento" matInput placeholder="Vencimiento"   required/>
@@ -49,9 +49,9 @@
             </mat-form-field> -->
             <mat-form-field class="full-width-input">
 
-                <input formControlName="vencimiento" matInput placeholder="Elija fecha de vencimiento" [matDatepicker]="picker"   required/>
+                <input formControlName="vencimiento" matInput placeholder="Elija fecha de vencimiento" [matDatepicker]="picker" [min]="minDate" disabled  required/>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>
                 <mat-error *ngIf="checkFieldProducto('vencimiento')">
                     {{getErrorMessageProducto('vencimiento')}}
                 </mat-error>
@@ -119,7 +119,7 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field class="full-width-input">
+            <!--<mat-form-field class="full-width-input">
                 <input formControlName="tipo_comprobante" matInput placeholder="Tipo comprobante"   required/>
                 <mat-error *ngIf="checkFieldCompras('tipo_comprobante')">
                     {{getErrorMessageCompras('tipo_comprobante')}}
@@ -131,7 +131,7 @@
                 <mat-error *ngIf="checkFieldCompras('num_comprobante')">
                     {{getErrorMessageCompras('num_comprobante')}}
                 </mat-error>
-            </mat-form-field>
+            </mat-form-field>-->
 
             <mat-form-field class="full-width-input">
                 <input formControlName="cantidad_ingreso" matInput placeholder="Cantidad ingreso"   required/>
@@ -141,7 +141,7 @@
             </mat-form-field>
 
             <mat-form-field class="full-width-input">
-                <input formControlName="observacion" matInput placeholder="Observación"   required/>
+                <input formControlName="observacion" matInput placeholder="Observación" oninput="this.value=this.value.toUpperCase()"   required/>
                 <mat-error *ngIf="checkFieldCompras('observacion')">
                     {{getErrorMessageCompras('observacion')}}
                 </mat-error>
@@ -235,6 +235,7 @@
     >Guardar</button>
 </ng-template>
 
+
 <ng-template #editarProductos class="btn-actions">
     <button mat-button mat-dialog-close class="btn-actionsCancel">Cancelar</button>
     <button
@@ -243,7 +244,19 @@
     color="primary"
     (click)="onSave()"
     ckdFocusInitial
-    [disabled]="!productoForm.valid ||  !unidadProductoForm || !compraForm"
+    [disabled]="!productoForm.get('nombre').value
+                  || !productoForm.get('descripcion').value
+                  || !productoForm.get('stock').value
+                  || !productoForm.get('minimo').value
+                       || !productoForm.get('vencimiento').value
+                  || !productoForm.get('precio').value
+                  || !productoForm.get('disponible').value
+                  || !productoForm.get('peso').value
+
+                  || !productoForm.get('categoria').value
+
+                  ||  !unidadProductoForm.valid
+                  || !compraForm.valid"
      class="btn-actionsSave"
 
     >Guardar</button>

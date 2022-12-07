@@ -21,12 +21,12 @@ table{
 
  .mat-column-stock {
      flex: none;
-     width: 3%;
+     width: 5%;
  }
 
  .mat-column-minimo {
      flex: none;
-     width: 4%;
+     width: 5%;
  }
 
 .mat-column-maximo{
@@ -35,7 +35,7 @@ table{
  }
  .mat-column-precio{
      flex: none;
-     width: 4%;
+     width: 5%;
  }
 
  .mat-column-disponible{
@@ -50,7 +50,7 @@ table{
 
  .mat-column-peso{
      flex: none;
-     width: 3%;
+     width: 4%;
  }
 
  .mat-column-valor{
@@ -63,11 +63,11 @@ table{
  }
  .mat-column-linkimgprodu{
      flex: none;
-     width: 4%;
+     width: 5%;
  }
 .mat-column-vencimiento{
      flex: none;
-     width: 7%;
+     width: 10%;
  }
 
 
@@ -78,7 +78,7 @@ table{
 
  .mat-column-nombre{
      flex: none;
-     width: 4%;
+     width: 20%;
  }
 
  .mat-column-oferta{
@@ -87,21 +87,30 @@ table{
  }
  .mat-column-descripcion{
      flex: none;
-     width: 10%;
+     width: 5%;
  }
+ .mat-column-nombre_categoria{
+  flex:none;
+  width: 8%;
+ }
+ .mat-column-actions{
+  flex:none;
+  width: 13%;
+ }
+
 
 
 
  .search-div{
      margin: 10px;
  }
- .search-form-field{
+ /*.search-form-field{
      width: 30%;
      margin-left: 2%;
 
 
 
- }
+ }*/
  .paginator{
      width: 95%;
  }
@@ -111,8 +120,9 @@ table{
  }
 
  th.mat-header-cell{
-     background-color: rgb(54, 190, 88);
-     color: rgb(94, 34, 206);
+     background-color: #79DAE8;
+     /*background-color: rgb(54, 190, 88);*/
+     color: #2155CD;
 
      font-weight: bold;
      font-family: Arial;
@@ -128,9 +138,9 @@ table{
  }
  .button-rosado{
      color: floralwhite;
-     background-color: rgb(224, 20, 163);
-     width: 15%;
-     left:  35px;
+     background-color: #2155CD;
+     width:40%;
+     left:  25px;
 
  }
 
@@ -139,3 +149,62 @@ table{
      margin: 12px;
 
  }
+
+ .caja-range-btnAgrega-pdf{
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    height: 100px;
+
+    margin-top: 30px;
+    margin-bottom: 5px;
+  }
+  .caja-range-btnAgrega-pdf .table-button-row {
+
+    display: flex;
+    align-items: center;
+
+
+  }
+  .caja-range-btnAgrega-pdf .table-button-row button{
+
+    padding: 3px 10px;
+    font-size: 14px;
+
+  }
+  .caja-range-btnAgrega-pdf .table-range {
+
+    display: flex;
+    align-items: flex-end;
+
+
+
+
+
+
+  }
+
+
+  .caja-range-btnAgrega-pdf .table-range .search-form-range{
+   font-size: 12px;
+
+
+
+  }
+  .caja-range-btnAgrega-pdf .table-range .search-form-field{
+
+    font-size:  12px;
+    width: 200px;
+    margin-left: 5px;
+
+
+
+  }
+  .caja-range-btnAgrega-pdf .table-range .search-form-porvencer{
+    font-size:  12px;
+    width: 150px;
+  }
+  .caja-range-btnAgrega-pdf .table-range .search-form-range, button{
+
+    margin-left: 5px;
+    padding: 3px 15px;
+  }

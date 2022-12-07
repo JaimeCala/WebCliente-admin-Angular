@@ -14,7 +14,7 @@ import { Users } from '../models/userList.interface';
 export class LoginService {
 
   constructor(private http: HttpClient) { }
-  
+
 
 /*getTodosUsers(): Observable<Userss[]>{
     return this.http
@@ -38,7 +38,7 @@ export class LoginService {
   }
 
   updateLogin(loginId: number, username: LoginUpdateUsername): Observable<Login>{
-    console.log("desde service login", username);
+    
     return this.http
     .put<Login>(`${environment.API_URL}/login/put/${loginId}`,username)
     .pipe(catchError(this.handlerError));

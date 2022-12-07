@@ -5,8 +5,8 @@ export class CompraPdf{
     idcompra: number;
     precio_compra_uni: number;
     precio_compra_total: number;
-    tipo_comprobante: string;
-    num_comprobante: string;
+    //tipo_comprobante: string;
+    //num_comprobante: string;
     cantidad_ingreso: number;
     observacion: string;
     fecha: Date;
@@ -14,7 +14,7 @@ export class CompraPdf{
 
     proveedor = new ProveedorPdf;
     producto = new ProductoPdf;
-    
+
 
 }
 
@@ -34,8 +34,8 @@ export class ProductoPdf{
     peso: number;
     fecha: Date;
 
-    
-    
+
+
 }
 
 export class ProveedorPdf{
@@ -49,8 +49,8 @@ export class ProveedorPdf{
     direccion: string;
     fecha: Date;
     hora: Date;
-    
 
-    
-    
+
+
+
 }

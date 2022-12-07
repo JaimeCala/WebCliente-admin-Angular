@@ -31,6 +31,9 @@ enum Action {
 })
 export class ModalproductoComponent implements OnInit {
 
+  minDate: Date;
+  //maxDate: Date;
+
   actionTODO= Action.NEW;
   /*showPasswordField = true;
   showUsernameField = true;
@@ -59,7 +62,17 @@ export class ModalproductoComponent implements OnInit {
     private comprasService: CompraService,
     private proveedorService: ProveedorService,
 
-    ) { }
+    ) {
+        //validacion de entrada de fecha de vencimiento
+        const currentYear = new Date().getUTCFullYear();
+        const currentMonth = new Date().getUTCMonth();
+        //const currentDay = new Date().getUTCDay();
+        console.log("currentYear"+currentYear);
+        console.log("currentMonth"+currentMonth);
+
+        this.minDate = new Date(currentYear - 0, currentMonth+1, 1);
+        //this.maxDate = new Date(currentYear + 1, 11, 31);
+    }
 
   productoForm = this.formBuilder.group(
   {
@@ -67,7 +80,7 @@ export class ModalproductoComponent implements OnInit {
         descripcion: ['', [Validators.required]],
         stock: ['', [Validators.required]],
         minimo: ['', [Validators.required]],
-        maximo: ['', [Validators.required]],
+        //maximo: ['', [Validators.required]],
         vencimiento: ['',[Validators.required]],
         precio: ['',[Validators.required ]],
         disponible: ['', [Validators.required]],
@@ -101,8 +114,8 @@ export class ModalproductoComponent implements OnInit {
   {
         precio_compra_uni: ['',[Validators.required]],
         precio_compra_total: ['', [Validators.required]],
-        tipo_comprobante: ['', [Validators.required]],
-        num_comprobante: ['', [Validators.required]],
+        //tipo_comprobante: ['', [Validators.required]],
+        //num_comprobante: ['', [Validators.required]],
         cantidad_ingreso: ['', [Validators.required]],
         observacion: ['',[Validators.required]],
         fecha: ['',],
@@ -198,12 +211,16 @@ export class ModalproductoComponent implements OnInit {
             formData.append( 'producto',imgProductoformValue.producto);
 
             this.imgProductoService.newImgProductos(formData).subscribe(re=>{
+              //-----------refresh datasource--------//
+              this.productoService.filterProducto('Register');
 
             });
 
             //---------------inserta unidadproducto------------//
             unidadProductoformValue.producto = resproducto.idproducto;
             this.unidadProductoService.newUnidadProductos(unidadProductoformValue).subscribe(res=>{
+              //-----------refresh datasource--------//
+              this.productoService.filterProducto('Register');
 
             });
 
@@ -217,7 +234,12 @@ export class ModalproductoComponent implements OnInit {
 
             this.comprasService.newCompra(comprasformValue).subscribe(res=>{
               console.log('nuevo', res);
+              //-----------refresh datasource--------//
+              this.productoService.filterProducto('Register');
             });
+
+            //-----------refresh datasource--------//
+            this.productoService.filterProducto('Register');
 
 
       });
@@ -237,10 +259,13 @@ export class ModalproductoComponent implements OnInit {
 
         //----creamos otro objet para eliminar los campos que no se enviará--//
         let formProducto = Object.assign({},this.productoForm.value);
+        formProducto.vencimiento = formatDate(productoformValue.vencimiento, 'yyyy-MM-dd', 'en_ES');
         delete formProducto.fecha;
         //delete formProducto.hora;
         this.productoService.updateProducto(productoId, formProducto).subscribe(res=>{
           console.log('Actualizado producto',res);
+          //-----------refresh datasource--------//
+          this.productoService.filterProducto('Register');
         });
 
         const formData = new FormData();
@@ -248,11 +273,18 @@ export class ModalproductoComponent implements OnInit {
 
         this.imgProductoService.updateImgProductos(imgProductoId, formData).subscribe(res=>{
           console.log('Actualizado imgproducto', res);
+          //-----------refresh datasource--------//
+          this.productoService.filterProducto('Register');
         });
 
+        let formUnidadProducto = Object.assign({}, unidadProductoformValue);
+        delete formUnidadProducto.producto;
 
-        this.unidadProductoService.updateUnidadProductos(unidadProductoId, unidadProductoformValue).subscribe(res=>{
+
+        this.unidadProductoService.updateUnidadProductos(unidadProductoId, formUnidadProducto).subscribe(res=>{
           console.log('Actualizado Unidad producto',res);
+          //-----------refresh datasource--------//
+          this.productoService.filterProducto('Register');
         });
 
         //----creamos otro objet para eliminar los campos que no se enviará--//
@@ -262,11 +294,13 @@ export class ModalproductoComponent implements OnInit {
 
         this.comprasService.updateCompra(compraId, formCompras).subscribe(res=>{
           console.log('Actualizado compras',res);
+          //-----------refresh datasource--------//
+          this.productoService.filterProducto('Register');
         });
 
     }
         //-----------refresh datasource--------//
-        this.productoService.filterProducto('Register');
+        //this.productoService.filterProducto('Register');
 
 
   }
@@ -414,7 +448,7 @@ export class ModalproductoComponent implements OnInit {
       descripcion: this.data?.productos?.descripcion,
       stock: this.data?.productos?.stock,
       minimo: this.data?.productos?.minimo,
-      maximo: this.data?.productos?.maximo,
+      //maximo: this.data?.productos?.maximo,
       vencimiento: this.data?.productos?.vencimiento,
       precio: this.data?.productos?.precio,
       disponible: this.data?.productos?.disponible,
@@ -440,8 +474,8 @@ export class ModalproductoComponent implements OnInit {
 
       precio_compra_uni: this.data?.productos?.compra[0].precio_compra_uni,
       precio_compra_total: this.data?.productos?.compra[0].precio_compra_total,
-      tipo_comprobante: this.data?.productos?.compra[0].tipo_comprobante,
-      num_comprobante: this.data?.productos?.compra[0].num_comprobante,
+      //tipo_comprobante: this.data?.productos?.compra[0].tipo_comprobante,
+      //num_comprobante: this.data?.productos?.compra[0].num_comprobante,
       cantidad_ingreso: this.data?.productos?.compra[0].cantidad_ingreso,
       observacion: this.data?.productos?.compra[0].observacion,
 

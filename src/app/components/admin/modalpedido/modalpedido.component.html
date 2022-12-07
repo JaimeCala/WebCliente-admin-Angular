@@ -6,11 +6,11 @@
       <button mat-flat-button class="button-rosado" (click)="onOpenModal()">Poner funcionalidadddd</button>
       <mat-form-field appearance="outline" class="search-form-field" floatLabel="never">
         <input matInput   placeholder="Buscar" autocomplete="off" (keyup)="applyFilter($event.target.value)"/>
-     
+
       </mat-form-field>
     </div>-->
     <div class="detall-pedido">
-     <h1>DETALLES DE PEDIDOS</h1>
+     <h1>DETALLE DE PEDIDO</h1>
     </div>
 
     <table mat-table [dataSource]="dataSource" matSort >
@@ -21,7 +21,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
         <td mat-cell *matCellDef="let element"> {{element.idpedidoproducto}} </td>
       </ng-container>
-     
+
 
       <!-- Name Column -->
       <ng-container matColumnDef="cantidad">
@@ -35,46 +35,46 @@
         <td mat-cell *matCellDef="let element" class="center"> {{element.precio_uni}} </td>
       </ng-container>
 
-   
-       
-      
+
+
+
       <!-- Name Column -->
       <ng-container  matColumnDef="precio_total">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> PRECIO<br> TOTAL </th>
         <td  mat-cell *matCellDef="let element"> {{element.precio_total}} </td>
       </ng-container>
 
-      
-      <!-- Name Column 
+
+      <!-- Name Column
       <ng-container  matColumnDef="idproducto">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID <br> PRODUCTO </th>
         <td  mat-cell *matCellDef="let element"> {{element.producto.idproducto}} </td>
       </ng-container>-->
 
-      
 
-      
+
+
       <!-- Name Column -->
       <ng-container  matColumnDef="productonombre">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE </th>
         <td  mat-cell *matCellDef="let element"> {{element.productonombre}} </td>
       </ng-container>
 
-     
 
-      <!-- Name Column 
+
+      <!-- Name Column
       <ng-container  matColumnDef="descripcion">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> DESCRIPCIÓN </th>
         <td  mat-cell *matCellDef="let element"> {{element.producto.descripcion}} </td>
       </ng-container>-->
 
-  <!-- Name Column 
+  <!-- Name Column
       <ng-container  matColumnDef="longitud">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> LONGITUD </th>
         <td  mat-cell *matCellDef="let element"> {{element.longitud}} </td>
       </ng-container>-->
- 
-      <!-- Name Column 
+
+      <!-- Name Column
       <ng-container  matColumnDef="estado">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ESTADO </th>
         <td  mat-cell *matCellDef="let element" >
@@ -84,32 +84,32 @@
       </ng-container>-->
 
 
-      
 
-     
-      <!-- Name Column 
+
+
+      <!-- Name Column
       <ng-container  matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="actionCampo"> ACCIONES  </th>
-        <td  mat-cell *matCellDef="let element"> 
+        <td  mat-cell *matCellDef="let element">
           <div class="table-button-row">
-            
+
             <button mat-button mat-raised-button  class="button-yellow" (click)="onOpenModal(element)">Detalles</button>
             <button mat-button mat-raised-button  color="warn" (click)="onDelete(element.idcategoria)">Eliminar</button>
-          
-          
+
+
           </div>
-        
+
         </td>
 
-        
-        
-          
-    
+
+
+
+
       </ng-container>-->
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      
+
     </table>
     <mat-paginator class="paginator" [pageSizeOptions]="[5,10,25,100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 
@@ -120,18 +120,18 @@
 <mat-divider>
 </mat-divider>
 <div class="detall-pedido">
-     <h1>DETALLES DE USUARIO</h1>
+     <h1>DETALLE DE USUARIO</h1>
 </div>
 <!--------------------------------otra sección usuario------------------------------------------------------------------------------->
    <table mat-table [dataSource]="dataSourceUsuario" matSort >
 
 
-      <!-- Position Column 
+      <!-- Position Column
       <ng-container matColumnDef="idusuario">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
         <td mat-cell *matCellDef="let element"> {{element.idusuario} </td>
       </ng-container>-->
-     
+
 
       <!-- Name Column -->
       <ng-container matColumnDef="ci">
@@ -139,21 +139,21 @@
         <td mat-cell *matCellDef="let element"> {{element.ci}} </td>
       </ng-container>
 
-      <!-- Weight Column 
+      <!-- Weight Column
       <ng-container matColumnDef="expedido">
         <th mat-header-cell *matHeaderCellDef mat-sort-header><label>EXPEDIDO</label>  </th>
         <td mat-cell *matCellDef="let element" class="center"> {{element.expedido}} </td>
       </ng-container>-->
 
-   
-       
-      
+
+
+
       <!-- Name Column -->
       <ng-container  matColumnDef="nombre">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE </th>
         <td  mat-cell *matCellDef="let element"> {{element.nombre}} </td>
       </ng-container>
-      
+
       <!-- Name Column -->
       <ng-container  matColumnDef="paterno">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> PATERNO </th>
@@ -177,11 +177,11 @@
         <td  mat-cell *matCellDef="let element"> {{element.direccion}} </td>
       </ng-container>
 
-  
+
 
       <tr mat-header-row *matHeaderRowDef="displayedColumnsUsuario"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumnsUsuario;"></tr>
-      
+
     </table>
 
 
@@ -191,72 +191,72 @@
 <mat-dialog-content>
     <div class="modal-form">
         <form [formGroup]="ventaForm" >
-       
+
             <mat-form-field class="full-width-input-medio">
                 <input formControlName="observacion" matInput placeholder="Observación"  />
                 <mat-error *ngIf="checkFieldVenta('observacion')">
                     {{getErrorMessageVenta('observacion')}}
                 </mat-error>
             </mat-form-field>
-   
+
         </form>
     </div>
-      
+
      <div class="modal-form">
         <form [formGroup]="vendedorForm" >
-       
-            
+
+
 
             <mat-form-field class="full-width-input">
                     <mat-label>Seleccione vendedor</mat-label>
                         <mat-select formControlName="user"  required>
-                           
+
                             <mat-option *ngFor="let vended of myVendedor" [value]="vended.idusuario">{{vended.nombre}}   {{vended.paterno}}</mat-option>
-                
+
                         </mat-select>
                     <mat-error *ngIf="checkFieldVendedor('user')">
                         {{getErrorMessageVendedor('user')}}
                     </mat-error>
-                 
+
             </mat-form-field>
 
-            
+
 
         </form>
     </div>
     <div class="modal-form">
         <form [formGroup]="RepartidorForm" >
-       
-            
+
+
 
             <mat-form-field class="full-width-input">
                     <mat-label>Seleccione repartidor</mat-label>
                         <mat-select formControlName="user"  required>
-                           
+
                             <mat-option *ngFor="let repart of myRepartidor" [value]="repart.idusuario">{{repart.nombre }}   {{repart.paterno}}</mat-option>
-                
+
                         </mat-select>
                     <mat-error *ngIf="checkFieldRepartidor('user')">
                         {{getErrorMessageRepartidor('user')}}
                     </mat-error>
-                 
+
             </mat-form-field>
 
-            
+
 
         </form>
     </div>
 
 
-    
 
-  
+
+
 </mat-dialog-content>
 
 <!--{{userForm.status}} status-->
 
 <mat-dialog-actions >
-    <button mat-button  color="primary" (click)="createPdf()" class="btn-cancel">PDF</button>
+    <button mat-button  color="primary" (click)="createPdf()" class="btn-cancel">Imprimir reporte</button>
     <button mat-button mat-dialog-close class="btn-actionsCancel">Cancelar</button>
     <button
     mat-raised-button
@@ -266,9 +266,9 @@
     ckdFocusInitial
     [disabled]="!vendedorForm.valid  || !RepartidorForm "
     class="btn-actionsSave"
-    >Guardar</button>
-        
-    
+    >Enviar pedido</button>
+
+
 </mat-dialog-actions>
 
 

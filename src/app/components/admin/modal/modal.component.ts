@@ -19,7 +19,7 @@ enum Action {
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
-  
+
   actionTODO= Action.NEW;
 
   showPasswordField = true;
@@ -33,16 +33,16 @@ export class ModalComponent implements OnInit {
   myrole:any =[];
   fecha:Date;
   hora:Date;
-  
+
   private isValidEmail: any = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
-  
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private usersService: UsersService, private loginService: LoginService
      ) { }
 
   userForm = this.formBuilder.group(
-   { 
+   {
     ci: ['',[Validators.required, Validators.minLength(7)]],
     expedido: ['', [Validators.required]],
     nombre: ['', [Validators.required]],
@@ -54,20 +54,20 @@ export class ModalComponent implements OnInit {
     sexo: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
     rol: ['', [Validators.required]],
-   
+
   },);
 
 
   loginForm = this.formBuilder.group(
-   { 
-    
+   {
+
           username:['',[Validators.required]],
               //estado: ['', [Validators.required]],
           password:['',[Validators.required, Validators.minLength(6)]],
           fecha: ['',[Validators.required]],
           hora: ['',[Validators.required]],
           user: ['',[]]
-   
+
   },);
 
 
@@ -95,18 +95,18 @@ export class ModalComponent implements OnInit {
 
 
   }
-  
-  
+
+
 //----------------Boton guardar y actualizar usuario loggin---------------//
   onSave(): void{
 
    const fecha = formatDate(new Date(),'yyyy-MM-dd','en_ES');
    const hora = formatDate(new Date(), 'hh:mm:ss','en_ES');
- 
+
     const userformValue = this.userForm.value;
     const loginformValue = this.loginForm.value;
     //const loginUpdateformValue = this.loginForm.controls.username;
-  
+
     if(this.actionTODO===Action.NEW){
       //inserta usuario
 
@@ -117,22 +117,25 @@ export class ModalComponent implements OnInit {
                   loginformValue.fecha= fecha;
                   loginformValue.hora= hora;
                   loginformValue.user = res.idusuario;
-                  
+
                   this.loginService.newLogin(loginformValue).subscribe(re=>{
-                    //console.log('new login',re ); 
+                    //console.log('new login',re );
+                    //--modificar para actualizar refresh---- descomentar.
+                    this.usersService.filterUser('Recargando');
+
                   });
-       
+
 
       });
-              
-      
+
+
 
     }else{
         //-------------Actualizando con datos de api users realtions con login----//
         const userId = this.data?.users?.idusuario;
         const loginId = this.data?.users?.logins[0].idlogin;
         const username = this.userForm.get('email').value;
-        
+
         this.usersService.updateUser(userId, userformValue).subscribe(res=>{
           console.log('Actualizado usuario',res);
         });
@@ -141,26 +144,31 @@ export class ModalComponent implements OnInit {
         //------------obtenemos valor del campo email--//
         loginformValue.username = username;
         //----creamos otro objet para eliminar los campos que no se enviará--//
-        let formlogi= Object.assign({},this.loginForm.value);
+        let formlogi= Object.assign(this.loginForm.value);
         delete formlogi.password;
         delete formlogi.fecha;
         delete formlogi.hora;
+        delete formlogi.user;
+
         formlogi.username = username;
 
-        
+        console.log("loginId"+ formlogi);
+        console.log(formlogi);
         this.loginService.updateLogin(loginId, formlogi).subscribe(res=>{
           console.log('Actualizado login', res);
         });
+        //refresh data
+        this.usersService.filterUser('Recargando');
     }
   }
 //-------------------Fin boton guardar , actualizar--------------------------------//
- 
+
 //----------------validacion para usuario-----------------------------//
   isValidField(field: string): boolean{
     //this.getErrorMessage(field);
     return (
-    (this.userForm.get(field).touched || this.userForm.get(field).dirty) && 
-    !this.userForm.get(field).valid); 
+    (this.userForm.get(field).touched || this.userForm.get(field).dirty) &&
+    !this.userForm.get(field).valid);
   }
 
   getErrorMessage(field: string): void{
@@ -177,8 +185,8 @@ export class ModalComponent implements OnInit {
       }
       return message;
 
-    
-    
+
+
 
   }
  checkField(field: string): boolean{
@@ -192,8 +200,8 @@ export class ModalComponent implements OnInit {
   isValidFieldLogin(field: string): boolean{
     //this.getErrorMessage(field);
     return (
-    (this.loginForm.get(field).touched || this.loginForm.get(field).dirty) && 
-    !this.loginForm.get(field).valid); 
+    (this.loginForm.get(field).touched || this.loginForm.get(field).dirty) &&
+    !this.loginForm.get(field).valid);
   }
 
   getErrorMessageLogin(field: string): void{
@@ -210,8 +218,8 @@ export class ModalComponent implements OnInit {
       }
       return message;
 
-    
-    
+
+
 
   }
  checkFieldLogin(field: string): boolean{

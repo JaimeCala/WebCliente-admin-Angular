@@ -13,7 +13,7 @@
                     {{getErrorMessage('ci')}}
                 </mat-error>
             </mat-form-field>
-           
+
 
             <mat-form-field class="full-width-input">
                  <mat-label>Seleccione expedido</mat-label>
@@ -28,30 +28,30 @@
                      <mat-option value="BE">BE</mat-option>
                      <mat-option value="PD">PD</mat-option>
                      <mat-option value="OTRO">OTRO</mat-option>
-          
+
                  </mat-select>
                  <mat-error *ngIf="checkField('expedido')">
                     {{getErrorMessage('expedido')}}
                  </mat-error>
-                 
+
             </mat-form-field>
 
             <mat-form-field class="full-width-input">
-                <input formControlName="nombre" matInput placeholder="Nombres" required/>
+                <input formControlName="nombre" matInput placeholder="Nombres" oninput="this.value=this.value.toUpperCase()" required/>
                 <mat-error *ngIf="checkField('nombre')">
                     {{getErrorMessage('nombre')}}
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width-input">
-                <input formControlName="paterno" matInput placeholder="Paterno" required/>
+                <input formControlName="paterno" matInput placeholder="Paterno" oninput="this.value=this.value.toUpperCase()" required/>
                 <mat-error *ngIf="checkField('paterno')">
                     {{getErrorMessage('paterno')}}
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width-input">
-                <input formControlName="materno" matInput placeholder="Materno" required/>
+                <input formControlName="materno" matInput placeholder="Materno" oninput="this.value=this.value.toUpperCase()" required/>
                 <mat-error *ngIf="checkField('materno')">
                     {{getErrorMessage('materno')}}
                 </mat-error>
@@ -72,7 +72,7 @@
             </mat-form-field>
 
             <mat-form-field class="full-width-input">
-                <input formControlName="direccion" matInput placeholder="Dirección" required/>
+                <input formControlName="direccion" matInput placeholder="Dirección" oninput="this.value=this.value.toUpperCase()" required/>
                 <mat-error *ngIf="checkField('direccion')">
                     {{getErrorMessage('direccion')}}
                 </mat-error>
@@ -81,29 +81,29 @@
             <mat-form-field class="full-width-input">
                  <mat-label>Seleccione sexo</mat-label>
                  <mat-select formControlName="sexo" required>
-                     <mat-option value="Femenino">FEMENINO</mat-option>
-                     <mat-option value="Masculino">MASCULINO</mat-option>
-          
+                     <mat-option value="FEMENINO">FEMENINO</mat-option>
+                     <mat-option value="MASCULINO">MASCULINO</mat-option>
+
                  </mat-select>
                  <mat-error *ngIf="checkField('sexo')">
                     {{getErrorMessage('sexo')}}
                 </mat-error>
-                 
+
             </mat-form-field>
 
             <mat-form-field class="full-width-input">
-                <input formControlName="ciudad" matInput placeholder="Ciudad" required/>
+                <input formControlName="ciudad" matInput placeholder="Ciudad" oninput="this.value=this.value.toUpperCase()" required/>
                 <mat-error *ngIf="checkField('ciudad')">
                     {{getErrorMessage('ciudad')}}
                 </mat-error>
             </mat-form-field>
 
-            
+
         <!--    <ng-container formGroupName="logins">
 
                 <mat-form-field class="full-width-input">
                     <input formControlName="username" matInput placeholder="Usuario" [value]="username"  />
-              
+
                 </mat-form-field>
 
 
@@ -114,8 +114,8 @@
                     </mat-error>
                 </mat-form-field>
 
-            </ng-container>   --> 
-            
+            </ng-container>   -->
+
             <mat-form-field class="full-width-input">
                     <mat-label>Seleccione</mat-label>
                         <mat-select formControlName="rol"  required>
@@ -124,14 +124,14 @@
                             <mat-option value="GENERAL">GENERAL</mat-option>
                             <mat-option value="REPARTIDOR">REPARTIDOR</mat-option>-->
                             <mat-option *ngFor="let rol of myrole" [value]="rol.idrol">{{rol.nombre}}</mat-option>
-                
+
                         </mat-select>
                     <mat-error *ngIf="checkField('rol')">
                         {{getErrorMessage('rol')}}
                     </mat-error>
-                 
+
             </mat-form-field>
-         
+
         </form>
 
 
@@ -140,7 +140,7 @@
         <form [formGroup]="loginForm">
             <mat-form-field class="full-width-input" *ngIf="showUsernameField">
                 <input formControlName="username" matInput placeholder="Usuario" [value]="username"  />
-     
+
             </mat-form-field>
             <mat-form-field class="full-width-input" *ngIf="showPasswordField">
                         <input formControlName="password" matInput placeholder="Contraseña" [type]=" hide ? 'password':'text'" required/>
@@ -155,21 +155,21 @@
 
         </form>
     </div>
-  
+
 </mat-dialog-content>
 
 <!--{{userForm.status}} status-->
 
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancelar</button>
-    <button 
+    <button
     mat-raised-button
     [mat-dialog-close]="true"
     color="primary"
     (click)="onSave()"
     ckdFocusInitial
     [disabled]="!userForm.valid"
-    
-    
+
+
     >Guardar</button>
 </mat-dialog-actions>

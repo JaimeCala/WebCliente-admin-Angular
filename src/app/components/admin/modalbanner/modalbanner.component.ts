@@ -110,12 +110,12 @@ export class ModalbannerComponent implements OnInit {
             //formData.append('categoria',`${idcategoria}`);
             this.bannerService.newImgBanner( formData).subscribe(re=>{
 
+              //-----------refresh datasource--------//
+              this.bannerService.filteBannerr('Registro banner img');
             });
 
 
 
-      //-----------refresh datasource--------//
-      this.bannerService.filter('Registro banner img');
 
     }else{
         //-------------Actualizando con datos de api users realtions con login----//
@@ -128,9 +128,9 @@ export class ModalbannerComponent implements OnInit {
 
         this.bannerService.updateImgBanner(imgBannerId, formData).subscribe(res=>{
           console.log('Actualizado banner', res);
+          //-----------refresh datasource--------//
+          this.bannerService.filteBannerr('actualización banner img');
         });
-        //-----------refresh datasource--------//
-      this.bannerService.filter('actualización banner img');
     }
   }
 //-------------------Fin boton guardar , actualizar--------------------------------//

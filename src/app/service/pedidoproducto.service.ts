@@ -11,9 +11,9 @@ import { PedidoProducto, PedidoProductoPdf } from '../models/pedidoproducto.inte
 })
 export class PedidoproductoService {
 
-  
+
    private _listenersPedidoProducto = new Subject<any>();
- 
+
 
   constructor(private http: HttpClient) {}
 
@@ -22,7 +22,7 @@ export class PedidoproductoService {
     .get<PedidoProducto[]>(`${environment.API_URL}/pedido-produ/pedidoproductos`)
     .pipe(catchError(this.handlerError));
   }
-  
+
 
   getPedidoProductoId(pedidoId: number): Observable<PedidoProducto[]>{
     return this.http
@@ -48,7 +48,7 @@ export class PedidoproductoService {
         .pipe(catchError(this.handlerError));
 
   }
-     
+
   newPedido(pedidosproductos: PedidoProducto): Observable<PedidoProducto>{
 
     return this.http
@@ -62,9 +62,9 @@ export class PedidoproductoService {
     .put<any>(`${environment.API_URL}/pedidoproducto/put/${pedidoproductoId}`,pedidoproducto)
     .pipe(catchError(this.handlerError));
   }
-  updatePedidoProductoStock( pedidoproducto: PedidoProducto[]): Observable<any[]>{
+  updatePedidoProductoStock( pedidoproducto: PedidoProducto[]): Observable<number>{
     return this.http
-    .post<any[]>(`${environment.API_URL}/producto/restaStock`,pedidoproducto)
+    .post<number>(`${environment.API_URL}/producto/restaStock`,pedidoproducto)
     .pipe(catchError(this.handlerError));
   }
 
@@ -74,8 +74,8 @@ export class PedidoproductoService {
       .pipe(catchError(this.handlerError));
   }
 
-  
-  //de la tabla roles para iterar 
+
+  //de la tabla roles para iterar
   /*getRoles(): Observable<PedidoProducto[]>{
     return this.http
     .get<PedidoProducto[]>(`${environment.API_URL}/rol/roles`)
@@ -93,7 +93,7 @@ export class PedidoproductoService {
   }
 
 
-  
+
   //------resfresh datasource----//
   listenPedidoProducto():Observable<any>{
     return this._listenersPedidoProducto.asObservable();

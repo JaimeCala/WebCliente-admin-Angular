@@ -1,0 +1,49 @@
+p{
+  font-size: 2rem;
+  margin-top: 20px;
+  margin-left: 50%;
+}
+.panel{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  text-align: center;
+  z-index: 7;
+}
+.left-panel{
+  pointer-events: all;
+  padding: 3rem 17% 2rem 12%;
+}
+
+.right-panel{
+  pointer-events: none;
+  padding: 3rem 12% 2rem 17%;
+}
+
+.panel .content{
+  color: #fff;
+}
+
+.panel h3{
+  font-weight: 600;
+  line-height: 1;
+  font-size: 1.5rem;
+}
+.panel p{
+  font-size: 0.95rem;
+  padding: 0.7rem 0;
+}
+
+.image{
+  width: 90%;
+}
+
+.right-panel   .image{
+  width: 40%;
+  padding-top: 50%;
+
+}
+
+
+

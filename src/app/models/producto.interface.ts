@@ -5,7 +5,7 @@ export class Producto{
     descripcion: string;
     stock: number;
     minimo: number;
-    maximo: number;
+    //maximo: number;
     vencimiento: Date;
     precio: number;
     disponible: string;
@@ -44,8 +44,8 @@ export class Compra{
     idcompra: number;
     precio_compra_uni: number;
     precio_compra_total: number;
-    tipo_comprobante: string;
-    num_comprobante: string;
+    //tipo_comprobante: string;
+    //num_comprobante: string;
     cantidad_ingreso: number;
     observacion: string;
     fecha: Date;

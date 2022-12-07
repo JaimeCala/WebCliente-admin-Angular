@@ -8,3 +8,7 @@ mat-sidenav-content{
 mat-sidenav-container{
     height: 100%;
 }
+.color-toolbar{
+  background-color: #0AA1DD;
+  color: #ffffff;
+}

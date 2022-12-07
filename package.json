@@ -24,6 +24,8 @@
     "@angular/router": "~12.2.1",
     "@auth0/angular-jwt": "^5.0.1",
     "moment": "^2.29.1",
+    "ng2-pdf-viewer": "^9.1.2",
+    "ngx-socket-io": "^4.1.0",
     "pdfmake": "^0.2.4",
     "pdfmake-wrapper": "^2.1.2",
     "rxjs": "~6.6.0",

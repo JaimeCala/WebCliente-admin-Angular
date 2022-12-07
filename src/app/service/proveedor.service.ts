@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 import { Proveedor } from '../models/proveedor.interface';
 
 @Injectable({
@@ -10,9 +11,9 @@ import { Proveedor } from '../models/proveedor.interface';
 })
 export class ProveedorService {
 
- 
+
    private _listenersProveedor = new Subject<any>();
- 
+
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +22,7 @@ export class ProveedorService {
     .get<Proveedor[]>(`${environment.API_URL}/proveedor/proveedores`)
     .pipe(catchError(this.handlerError));
   }
-  
+
 
   getProveedorId(proveedorId: string): Observable<Proveedor>{
     return this.http
@@ -29,7 +30,7 @@ export class ProveedorService {
         .pipe(catchError(this.handlerError));
 
   }
-     
+
   newProveedor(proveedors: Proveedor): Observable<Proveedor>{
 
     return this.http
@@ -50,8 +51,8 @@ export class ProveedorService {
       .pipe(catchError(this.handlerError));
   }
 
-  
-  //de la tabla roles para iterar 
+
+  //de la tabla roles para iterar
   /*getRoles(): Observable<Proveedor[]>{
     return this.http
     .get<Proveedor[]>(`${environment.API_URL}/rol/roles`)
@@ -63,13 +64,28 @@ export class ProveedorService {
       if(error){
         errorMessage = `Error ${error.message}`;
       }
-      window.alert(errorMessage);
+      Swal.fire({
+      title: 'Error',
+      text: 'No se puede realizar la acción',
+      icon: 'warning',
+      //showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Cerrar',
+    }).then(result =>{
+      if(result.value){
+
+
+      }
+      errorMessage
+
+    })
       return throwError(errorMessage);
 
   }
 
 
-  
+
   //------resfresh datasource----//
   listenProveedor():Observable<any>{
     return this._listenersProveedor.asObservable();

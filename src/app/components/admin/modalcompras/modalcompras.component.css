@@ -1,11 +1,11 @@
 table{
     width: 95%;
     margin: 0 auto;
-    margin-top: 1rem; 
-    
+    margin-top: 1rem;
+
     table-layout: fixed;
 
-   
+
  }
  th,td{
      overflow: hidden;
@@ -26,10 +26,10 @@ table{
  .mat-column-stock {
      flex: none;
      width: 5%;
-    
+
  }
 
- 
+
 .mat-column-vencimiento{
      flex: none;
      width: 12%;
@@ -39,7 +39,7 @@ table{
      width: 5%;
  }
 
- 
+
 
  .mat-column-idproveedor{
      flex: none;
@@ -60,7 +60,7 @@ table{
      width: 9%;
  }
 
- 
+
 
  .mat-column-email{
      flex: none;
@@ -72,8 +72,8 @@ table{
      width: 15%;
  }
 
- 
- 
+
+
 
  .search-div{
      margin: 10px;
@@ -81,9 +81,9 @@ table{
  .search-form-field{
      width: 30%;
      margin-left: 2%;
-    
-     
- 
+
+
+
  }
  .paginator{
      width: 95%;
@@ -94,23 +94,24 @@ table{
  }
 
  th.mat-header-cell{
-     background-color: coral;
-     color: rgb(94, 34, 206);
-    
+     background-color: #79DAE8;
+     /*background-color: rgb(54, 190, 88);*/
+     color: #2155CD;
+
      font-weight: bold;
      font-family: Arial;
 
      text-align: left;
      max-width: 300px;
-     
+
  }
 
 
- 
+
 
  .table-button-row button{
      margin: 12px;
-     
+
  }
  .detall-pedido{
      font-size: x-large;

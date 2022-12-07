@@ -8,13 +8,26 @@
         <button mat-icon-button (click)="onToggleSidenav()">
                 <mat-icon>menu</mat-icon>
         </button>
-    </ng-container>    
+    </ng-container>
     <span><a>Home Service</a></span>
     <span class="spacer"></span>
         <a *ngIf="!isLogged; else viewLogout" mat-button routerLink="/login">Iniciar Sesión</a>
         <a *ngIf="isAdmin === 'ADMIN'" mat-button routerLink="/admin">Administrador</a>
         <a *ngIf="isVendedor === 'VENDEDOR'" mat-button routerLink="/admin">Vendedor</a>
-    
+
+
+
+    <button *ngIf="isLogged;" mat-icon-button  (click)="toggleBadgeVisibilityNotification()" class="notif-icon">
+                <mat-icon [matBadgeHidden]="hiddenNotification" matBadge="{{notification}}" matBadgeColor="warn">add_shopping_cart</mat-icon>
+    </button>
+
+
+    <button *ngIf="isLogged;" mat-icon-button  (click)="toggleBadgeVisibilityMessage()" class="notif-icon" >
+                <mat-icon [matBadgeHidden]="hiddenMessage" matBadge="{{message}}" matBadgeColor="warn">message</mat-icon>
+    </button>
+
+
+
 </mat-toolbar>
 
 <ng-template #viewLogout>

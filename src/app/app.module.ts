@@ -14,10 +14,13 @@ import { SidebarModule } from './components/sidebar/sidebar.module';
 import { AdminInterceptor } from './interceptors/admin-interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BannerModule } from './components/admin/banner/banner.module';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 //import { PdfComponent } from './components/admin/pdf/pdf.component';
 
 //import { MatDatepickerModule} from '@angular/material/datepicker';
 //import { MatNativeDateModule } from '@angular/material/core';
+
+const config: SocketIoConfig = { url: 'http://localhost:8181', options: {} };
 
 
 
@@ -45,9 +48,10 @@ import { BannerModule } from './components/admin/banner/banner.module';
     BannerModule,
     //MatDatepickerModule,
     //MatNativeDateModule,
-    
-    
-    
+    SocketIoModule.forRoot(config),
+
+
+
 
   ],
   providers: [

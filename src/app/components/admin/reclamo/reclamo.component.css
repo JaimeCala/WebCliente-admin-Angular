@@ -1,0 +1,119 @@
+table{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 1rem;
+
+    table-layout: fixed;
+
+
+ }
+ th,td{
+     overflow: hidden;
+     width: 50px;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+ }
+ .mat-column-idreclamo {
+     flex: none;
+     width: 1%;
+ }
+
+ .mat-column-comentario {
+     flex: none;
+     width: 20%;
+ }
+
+ .mat-column-estado {
+     flex: none;
+     width: 4%;
+ }
+
+.mat-column-ci{
+     flex: none;
+     width: 8%;
+ }
+ .mat-column-nombre{
+     flex: none;
+     width: 10%;
+ }
+
+
+ .mat-column-paterno{
+     flex: none;
+     width: 10%;
+ }
+
+ .mat-column-materno{
+     flex: none;
+     width: 10%;
+ }
+
+ .mat-column-email{
+     flex: none;
+     width: 10%;
+ }
+
+ .mat-column-celular{
+     flex: none;
+     width: 8%;
+ }
+ .mat-column-ciudad{
+     flex: none;
+     width: 6%;
+ }
+ .mat-column-actions{
+  flex: none;
+  width: 8%;
+ }
+
+
+
+
+ .search-div{
+     margin: 10px;
+ }
+ .search-form-field{
+     width: 30%;
+     margin-left: 2%;
+
+
+
+ }
+ .paginator{
+     width: 95%;
+ }
+
+ th.mat-sort-header-sorted{
+     color: black;
+ }
+
+ th.mat-header-cell{
+     background-color: #79DAE8;
+     /*background-color: rgb(54, 190, 88);*/
+     color: #2155CD;
+
+     font-weight: bold;
+     font-family: Arial;
+
+     text-align: left;
+     max-width: 300px;
+
+ }
+
+ .button-yellow{
+
+     background-color: rgb(19, 226, 233);
+ }
+ .button-rosado{
+     color: floralwhite;
+     background-color: rgb(224, 20, 163);
+     width: 15%;
+     left:  35px;
+
+ }
+
+
+ .table-button-row button{
+     margin: 12px;
+
+ }

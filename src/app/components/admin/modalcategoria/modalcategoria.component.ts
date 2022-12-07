@@ -34,28 +34,28 @@ export class ModalcategoriaComponent implements OnInit {
   imagenSelect: string | ArrayBuffer;
 
   URL:any;
-  
+
 
   private formBuilder: FormBuilder= new FormBuilder();
   /*username:any;
   myrole:any =[];*/
-  
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private categoriaService: CategoriaService, 
+    private categoriaService: CategoriaService,
     private imgCategoriaService: ImgcategoriaService
        ) { }
 
   categoriaForm = this.formBuilder.group(
-  { 
+  {
         nombre: ['', [Validators.required]],
   });
 
   imgCategoriaForm = this.formBuilder.group(
-  { 
+  {
           file:['',[Validators.required]],
           categoria: ['',[]],
-             
+
   },);
 
 
@@ -70,16 +70,16 @@ export class ModalcategoriaComponent implements OnInit {
       }, 0);
       //setea imagen de categoria
       this.URL=`${environment.API_URL}/img-categoria/`+this.data?.categorias?.imgcategorias[0].nombreimgcategoria;
-       
-      
-      
+
+
+
       //const reader = new FileReader();
       //reader.onload = e=> this.imagenSelect =   reader.result;
-      //reader.readAsDataURL(URL+this.data?.categorias?.imgcategorias[0].nombreimgcategoria); 
-     
+      //reader.readAsDataURL(URL+this.data?.categorias?.imgcategorias[0].nombreimgcategoria);
+
     }
-   
-     
+
+
   }
 
 
@@ -93,17 +93,17 @@ export class ModalcategoriaComponent implements OnInit {
         reader.onload = e =>this.imagenSelect = reader.result;
         reader.readAsDataURL(this.file);
     }
-     
+
       //this.imgCategoriaForm.get('file').setValue(this.file);
   }
-  //---------------fin------------------//  
-  
+  //---------------fin------------------//
+
 //----------------Boton guardar y actualizar categoria y imgcategoria---------------//
   onSave(): void{
 
     const categoriaformValue = this.categoriaForm.value;
     const imgCategoriaformValue = this.imgCategoriaForm.value;
-   
+
     if(this.actionTODO===Action.NEW){
       //inserta categoria
       this.categoriaService.newCategoria(categoriaformValue).subscribe(res=>{
@@ -113,30 +113,34 @@ export class ModalcategoriaComponent implements OnInit {
         //const idcategoria = res.idcategoria;
 
             imgCategoriaformValue.categoria = res.idcategoria;
-              //inserta imgcategoria     
+              //inserta imgcategoria
             const formData = new FormData();
             formData.append('file',this.file);
             formData.append('categoria', imgCategoriaformValue.categoria);
-          
+
            //const idcategoria = res.idcategoria
             //formData.append('categoria',`${idcategoria}`);
             this.imgCategoriaService.newImgCategoria( formData).subscribe(re=>{
-             
+
+              //-----------refresh datasource--------//
+              this.categoriaService.filterCategoria('Registro categoria img');
+
             });
 
       });
-     
-      //-----------refresh datasource--------//
-      this.categoriaService.filter('Registro categoria img');
+
+
 
     }else{
         //-------------Actualizando con datos de api users realtions con login----//
         const categoriaId = this.data?.categorias?.idcategoria;
         const imgCategoriaId = this.data?.categorias?.imgcategorias[0].idimgcategoria;
-    
-        
+
+
         this.categoriaService.updateCategoria(categoriaId, categoriaformValue).subscribe(res=>{
           console.log('Actualizado categoria',res);
+          //-----------refresh datasource--------//
+          this.categoriaService.filterCategoria('Actualización categoria img');
         });
 
         const formData = new FormData();
@@ -144,19 +148,20 @@ export class ModalcategoriaComponent implements OnInit {
 
         this.imgCategoriaService.updateImgCategoria(imgCategoriaId, formData).subscribe(res=>{
           console.log('Actualizado imgcategoria', res);
-        });
         //-----------refresh datasource--------//
-      this.categoriaService.filter('Registro categoria img');
+          this.categoriaService.filterCategoria('Actualización categoria img');
+        });
+
     }
   }
 //-------------------Fin boton guardar , actualizar--------------------------------//
- 
+
 //----------------validacion para categoria-----------------------------//
   isValidField(field: string): boolean{
     //this.getErrorMessage(field);
     return (
-    (this.categoriaForm.get(field).touched || this.categoriaForm.get(field).dirty) && 
-    !this.categoriaForm.get(field).valid); 
+    (this.categoriaForm.get(field).touched || this.categoriaForm.get(field).dirty) &&
+    !this.categoriaForm.get(field).valid);
   }
 
   getErrorMessage(field: string): void{
@@ -173,8 +178,8 @@ export class ModalcategoriaComponent implements OnInit {
       }
       return message;
 
-    
-    
+
+
 
   }
  checkField(field: string): boolean{
@@ -188,8 +193,8 @@ export class ModalcategoriaComponent implements OnInit {
   isValidFieldLogin(field: string): boolean{
     //this.getErrorMessage(field);
     return (
-    (this.imgCategoriaForm.get(field).touched || this.imgCategoriaForm.get(field).dirty) && 
-    !this.imgCategoriaForm.get(field).valid); 
+    (this.imgCategoriaForm.get(field).touched || this.imgCategoriaForm.get(field).dirty) &&
+    !this.imgCategoriaForm.get(field).valid);
   }
 
   getErrorMessageLogin(field: string): void{
@@ -206,8 +211,8 @@ export class ModalcategoriaComponent implements OnInit {
       }
       return message;
 
-    
-    
+
+
 
   }
  checkFieldLogin(field: string): boolean{
@@ -222,20 +227,20 @@ export class ModalcategoriaComponent implements OnInit {
 
   //------------------Inicializando datos para editar al formulario-------------//
   private pathForData():void{
-   
+
     this.categoriaForm.patchValue({
-  
+
       nombre: this.data?.categorias?.nombre,
-   
+
     });
     this.imgCategoriaForm.patchValue({
 
        //file: this.data?.categorias?.imgcategorias[0].nombreimgcategoria,
        //file: this.imagenSelect=URL+this.data?.categorias?.imgcategorias[0].nombreimgcategoria,
        //UR: URL+this.data?.categorias?.imgcategorias[0].nombreimgcategoria,
-    
+
     });
-   
+
   }
 
   //-----------input categoria a mayuscula----//

@@ -2,8 +2,8 @@ export class Vendedor{
 
     idvendedor: number;
     idusuario: number;
-    
-    
+
+
 }
 
 export class Venta{
@@ -12,7 +12,7 @@ export class Venta{
     idvendedor: number;
     observacion: string;
     estadopedido: string;
-    
+
 
 }
 
@@ -25,7 +25,7 @@ export class Repartidor{
     idusuario: string;
     idpedido: string;
     estado: number;
-   
+
 
 }
 
@@ -42,17 +42,16 @@ export class Repartidor{
     fecha: Date;
     idusuariocliente: number;
     idusuariorepartidor: number;
-   
+
 
 }
 
 
   export class VentasProductoMasvendidos{
     idproducto: number;
-   
+
     nombre: string;
     sumacantidad: string;
-   
-   
+    createdAt: Date;
 
 }

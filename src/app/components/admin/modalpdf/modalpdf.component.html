@@ -1,0 +1,28 @@
+
+
+<div class="container" *ngIf=" file.exec(pdfPagoPedio+data.pedidos.nombrefilepdf) ; else templateImg" >
+
+  <pdf-viewer [src]="pdfPagoPedio+data.pedidos.nombrefilepdf"
+  [render-text]="true"
+  [original-size]="false"
+  style="width: 400px; height: 500px"
+  ></pdf-viewer>
+</div>
+
+<ng-template #templateImg>
+
+  <img [src]="pdfPagoPedio+data.pedidos.nombrefilepdf" style="width: 400px; height: 500px;"/>
+</ng-template>
+<ng-container  >
+
+
+
+</ng-container>
+
+<mat-dialog-actions >
+
+    <button mat-button mat-dialog-close class="btn-actionsCancel">Cerrar</button>
+
+
+
+</mat-dialog-actions>

@@ -1,18 +1,52 @@
 <!--{{dataSource.data | json}}-->
+<div class="content-full">
+    <div class="caja-range-btnAgrega-pdf">
+      <div class="table-button-row">
+        <button mat-flat-button class="button-rosado" (click)="onOpenModal()">Agregar usuario</button>
+        <button mat-flat-button class="button-rosado" (click)="createPdf()">Imprimir Reporte</button>
+      </div>
+
+      <div class="table-range">
+        <form [formGroup]="rangeForm">
+          <mat-form-field appearance="outline" class="search-form-field" >
+            <mat-label>Buscar</mat-label>
+            <input matInput formControlName="buscar" color="accent" placeholder="Buscar" autocomplete="off" (keyup)="cargarEnTablaSiCampoVacio($event.target.value)" />
+            <mat-error *ngIf="rangeForm.controls.buscar.hasError('matBuscarInvalid')">LLene el campo</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="search-form-range">
+            <mat-label>Rango de fechas</mat-label>
+            <mat-date-range-input  [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="Fecha inicial">
+              <input matEndDate formControlName="end" placeholder="Fecha final">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+
+            <mat-error *ngIf="rangeForm.controls.start.hasError('matStartDateInvalid')">Primera fecha inválido</mat-error>
+            <mat-error *ngIf="rangeForm.controls.end.hasError('matEndDateInvalid')">Segunda fecha inválido</mat-error>
+          </mat-form-field>
+
+          <button
+              class="button-form-consultar"
+              mat-raised-button color="accent"
+              (click)="applyDateFilter()"
+              [disabled]="(rangeForm.get('buscar').invalid && (rangeForm.get('start').invalid || rangeForm.get('end').invalid))"  >Consultar</button>
+          <button
+              class="button-form-limpiar"
+              mat-raised-button color="accent"
+              (click)="clearFilter()"
+              [disabled]=" (rangeForm.get('start').invalid || rangeForm.get('end').invalid) && (rangeForm.get('buscar').invalid) ">Limpiar</button>
+        </form>
 
 
-    <div class="table-button-row">
-
-      <button mat-flat-button class="button-rosado" (click)="onOpenModal()">Crear usuario</button>
-      <mat-form-field appearance="outline" class="search-form-field" floatLabel="never">
-        <input matInput   placeholder="Buscar" autocomplete="off" (keyup)="applyFilter($event.target.value)"/>
-        <!--<button mat-button matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey" (click)="onSearchClear()">
-                <mat-icon>close</mat-icon>
-        </button>-->
-      </mat-form-field>
+      </div>
     </div>
 
-    <table mat-table [dataSource]="dataSource" matSort >
+
+
+
+      <table mat-table [dataSource]="dataSource" matSort >
 
       <!-- Position Column -->
       <ng-container matColumnDef="idusuario">
@@ -38,7 +72,7 @@
         <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
       </ng-container>
 
-      
+
       <!-- Name Column -->
       <ng-container matColumnDef="paterno">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> PATERNO </th>
@@ -56,7 +90,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> CORREO </th>
         <td mat-cell *matCellDef="let element"> {{element.email}} </td>
       </ng-container>
-      
+
       <!-- Name Column -->
       <ng-container matColumnDef="celular">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> CELULAR </th>
@@ -75,7 +109,7 @@
         <td mat-cell *matCellDef="let element"> {{element.sexo}} </td>
       </ng-container>
 
-      
+
       <!-- Name Column -->
       <ng-container matColumnDef="ciudad">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> CIUDAD </th>
@@ -88,48 +122,48 @@
         <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
       </ng-container>
 
-      <!-- Name Column 
+      <!-- Name Column
       <ng-container  matColumnDef="idlogin">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> IDLOGIN </th>
         <td  mat-cell *matCellDef="let element"> {{element.logins[0].idlogin}} </td>
       </ng-container>-->
 
-      
+
       <!-- Name Column -->
       <ng-container  matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> USERNAME </th>
         <td  mat-cell *matCellDef="let element"> {{element.logins[0].username}} </td>
       </ng-container>
 
-      
-      <!-- Name Column 
+
+      <!-- Name Column
       <ng-container  matColumnDef="password">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> PASSWORD </th>
         <td  mat-cell *matCellDef="let element"> {{element.logins[0].password}} </td>
       </ng-container>-->
 
-      
+
       <!-- Name Column -->
       <ng-container  matColumnDef="fecha">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> FECHA </th>
-        <td  mat-cell *matCellDef="let element"> {{element.logins[0].fecha}} </td>
+        <td  mat-cell *matCellDef="let element"> {{element.logins[0].fecha | date: 'dd-MM-YYYY'}} </td>
       </ng-container>
 
-      
+
       <!-- Name Column -->
       <ng-container  matColumnDef="hora">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> HORA </th>
         <td  mat-cell *matCellDef="let element"> {{element.logins[0].hora}} </td>
       </ng-container>
 
-      
-      <!-- Name Column 
+
+      <!-- Name Column
       <ng-container  matColumnDef="idrol">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID ROL </th>
         <td  mat-cell *matCellDef="let element" class="center"> {{element.rol.idrol}} </td>
       </ng-container>-->
 
-      
+
       <!-- Name Column -->
       <ng-container  matColumnDef="nombrerol">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> NOMBRE ROL </th>
@@ -139,26 +173,34 @@
       <!-- Name Column -->
       <ng-container  matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef mat-sort-header class="actionCampo"> ACCIONES  </th>
-        <td  mat-cell *matCellDef="let element"> 
-          <div class="table-button-row">
+        <td  mat-cell *matCellDef="let element">
+          <div class="table-button-actions">
             <!--<button mat-raised-button  class="button-yellow" (click)="onOpenModal(element)">Editar</button>
             <button mat-flat-button color="warn" (click)="onDelete(element.idusuario)">Eliminar</button>-->
             <button mat-icon-button  class="button-yellow" (click)="onOpenModal(element)"><mat-icon>edit</mat-icon></button>
             <button mat-icon-button  color="warn" (click)="onDelete(element.idusuario)"><mat-icon>delete</mat-icon></button>
-          
-          
+
+
           </div>
-        
+
         </td>
 
-        
-        
-          
-    
+
+
+
+
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      
+
     </table>
     <mat-paginator class="paginator" [pageSizeOptions]="[5,10,25,100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+
+
+
+
+
+
+</div>
+

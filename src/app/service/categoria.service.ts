@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 import { Categoria } from '../models/categoria.interface';
 
 @Injectable({
@@ -10,8 +11,8 @@ import { Categoria } from '../models/categoria.interface';
 })
 export class CategoriaService {
 
-  private _listeners = new Subject<any>();
- 
+  private _listenerCategoria = new Subject<any>();
+
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +21,7 @@ export class CategoriaService {
     .get<Categoria[]>(`${environment.API_URL}/categoria/categorias`)
     .pipe(catchError(this.handlerError));
   }
-  
+
 
   getCategoriaId(imgNombre: string): Observable<Categoria>{
     return this.http
@@ -28,7 +29,7 @@ export class CategoriaService {
         .pipe(catchError(this.handlerError));
 
   }
-     
+
   newCategoria(categorias: Categoria): Observable<Categoria>{
 
     return this.http
@@ -49,8 +50,8 @@ export class CategoriaService {
       .pipe(catchError(this.handlerError));
   }
 
-  
-  //de la tabla roles para iterar 
+
+  //de la tabla roles para iterar
   getRoles(): Observable<Categoria[]>{
     return this.http
     .get<Categoria[]>(`${environment.API_URL}/rol/roles`)
@@ -62,18 +63,33 @@ export class CategoriaService {
       if(error){
         errorMessage = `Error ${error.message}`;
       }
-      window.alert(errorMessage);
+      Swal.fire({
+      title: 'Error',
+      text: 'No se puede realizar la acción',
+      icon: 'warning',
+      //showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Cerrar',
+    }).then(result =>{
+      if(result.value){
+
+
+      }
+      errorMessage
+
+    })
       return throwError(errorMessage);
 
   }
 
 
-  
+
   //------resfresh datasource----//
-  listen():Observable<any>{
-    return this._listeners.asObservable();
+  listenCategoria():Observable<any>{
+    return this._listenerCategoria.asObservable();
   }
-  filter(filterBy: string){
-    this._listeners.next(filterBy);
+  filterCategoria(filterBy: string){
+    this._listenerCategoria.next(filterBy);
   }
 }

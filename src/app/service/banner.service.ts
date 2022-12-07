@@ -10,7 +10,7 @@ import { ImgBanner } from '../models/banner.interface';
 })
 export class BannerService {
 
-  private _listeners = new Subject<any>();
+  private _listenersBanner = new Subject<any>();
 
   constructor(private http: HttpClient) { }
 
@@ -62,10 +62,10 @@ export class BannerService {
 
 
   //------resfresh datasource----//
-  listen():Observable<any>{
-    return this._listeners.asObservable();
+  listenBanner():Observable<any>{
+    return this._listenersBanner.asObservable();
   }
-  filter(filterBy: string){
-    this._listeners.next(filterBy);
+  filteBannerr(filterBy: string){
+    this._listenersBanner.next(filterBy);
   }
 }
