@@ -13,7 +13,7 @@ import {  CompraPdf } from '../models/compras.interface';
 export class CompraService {
 
     private _listenersCompra = new Subject<any>();
- 
+
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +22,7 @@ export class CompraService {
     .get<CompraPdf[]>(`${environment.API_URL}/compra/compras`)
     .pipe(catchError(this.handlerError));
   }
-  
+
 
   getCompraId(compraID: number): Observable<CompraPdf>{
     return this.http
@@ -35,7 +35,7 @@ export class CompraService {
     .get<CompraPdf[]>(`${environment.API_URL}/compra/comprasReporte`)
     .pipe(catchError(this.handlerError));
   }
-  
+
 
   getCompraReportId(compraID: number): Observable<CompraPdf[]>{
     return this.http
@@ -43,7 +43,7 @@ export class CompraService {
         .pipe(catchError(this.handlerError));
 
   }
-     
+
   newCompra(compras: Compra): Observable<Compra>{
 
     return this.http
@@ -64,7 +64,7 @@ export class CompraService {
       .pipe(catchError(this.handlerError));
   }
 
-  
+
   handlerError(error): Observable<never>{
       let errorMessage = 'Error desconocido'
       if(error){
@@ -76,7 +76,8 @@ export class CompraService {
   }
 
 
-  
+
+
   //------resfresh datasource----//
   listenCompra():Observable<any>{
     return this._listenersCompra.asObservable();

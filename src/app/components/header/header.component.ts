@@ -91,6 +91,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
               this.notifications.push(res);
               this.notification = this.notification+this.notifications.length;
               this.notifications = [];
+              this.pedidoService.filterPedido('desde barra notificacion pedido');  //refresh pedidos
             });
     this.pedidoService
             .getTodosPedidoEsperaCount()
