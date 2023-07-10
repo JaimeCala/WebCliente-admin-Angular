@@ -1,8 +1,8 @@
-.card_inicio_sesion{
-  position:absolute;
+.card_inicio_sesion {
+  position: absolute;
   top: 30%;
   left: 75%;
-  box-shadow:3px 3px 3px 3px #40c4ff;
+  box-shadow: 3px 3px 3px 3px #40c4ff;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -10,16 +10,16 @@
   -o-transform: translate(-50%, -50%);
   z-index: 5;
 }
-.container{
+.container {
   position: relative;
   width: 100%;
   min-height: 92vh;
   background-color: #fff;
   overflow: hidden;
 }
-.container:before{
-  content: '';
-  position:absolute;
+.container:before {
+  content: "";
+  position: absolute;
   width: 2000px;
   height: 1500px;
   border-radius: 50%;
@@ -27,10 +27,10 @@
   top: 5%;
   right: 48%;
   transform: translateY(-50%);
-  -webkit-border-radius: 50% ;
-  -moz-border-radius: 50% ;
-  -ms-border-radius: 50% ;
-  -o-border-radius: 50% ;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -38,40 +38,39 @@
   z-index: 6;
 }
 
-mat-card{
-    max-width: 300px;
-    margin: 2em auto;
-    text-align: center;
-    max-height: 350px;
-
+mat-card {
+  max-width: 300px;
+  margin: 2em auto;
+  text-align: center;
+  max-height: 350px;
 }
 
-.header{
-    text-align: center;
+.header {
+  text-align: center;
 }
 
-.full-width-input, button{
-    width: 80%;
+.full-width-input,
+button {
+  width: 80%;
+  margin-bottom: 10px;
 }
 
-.forgot_password{
-    padding-top: 10%;
+.forgot_password {
+  padding-top: 10%;
 }
 
-.username-input{
-    padding-top: 10%;
+.username-input {
+  padding-top: 10%;
 }
 
-.aLink{
-    float: right;
-    padding-right: 60px;
-    text-decoration: none;
+.aLink {
+  float: right;
+  padding-right: 60px;
+  text-decoration: none;
 }
 
-
-
-.panels-container{
-  position:absolute;
+.panels-container {
+  position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
@@ -79,9 +78,8 @@ mat-card{
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
 }
-.panel{
+.panel {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -89,38 +87,40 @@ mat-card{
   text-align: center;
   z-index: 7;
 }
-.left-panel{
+.left-panel {
   pointer-events: all;
   padding: 3rem 17% 2rem 12%;
 }
 
-.right-panel{
+.right-panel {
   pointer-events: none;
   padding: 3rem 12% 2rem 17%;
 }
 
-.panel .content{
+.panel .content {
   color: #fff;
 }
 
-.panel h3{
+.panel h3 {
   font-weight: 600;
   line-height: 1;
   font-size: 1.5rem;
 }
-.panel p{
+.panel p {
   font-size: 0.95rem;
   padding: 0.7rem 0;
 }
 
-.image{
+.image {
   width: 90%;
 }
 
-.right-panel   .image{
+.right-panel .image {
   width: 40%;
   padding-top: 50%;
-
 }
 
-
+.card_inicio_sesion #linkforgot a {
+  color: rgb(14, 28, 230);
+  font-size: 0.7rem;
+}

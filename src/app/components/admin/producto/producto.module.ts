@@ -5,13 +5,8 @@ import { ProductoRoutingModule } from './producto-routing.module';
 import { ProductoComponent } from './producto.component';
 import { MaterialModule } from '../../../material.module';
 
-
 @NgModule({
   declarations: [ProductoComponent],
-  imports: [
-    CommonModule,
-    ProductoRoutingModule,
-    MaterialModule,
-  ]
+  imports: [CommonModule, ProductoRoutingModule, MaterialModule],
 })
-export class ProductoModule { }
+export class ProductoModule {}

@@ -1,58 +1,77 @@
-
 <div class="container">
-    <mat-card class="card_inicio_sesion">
-      <mat-card-content>
-          <div class="header">
-              <h2>INICIAR SESIÓN</h2>
-          </div>
-          <form   [formGroup]="loginForm" (ngSubmit)="onLogin()" name="loginForm">
-
-                  <mat-form-field class="full-width-input" appearance="outline">
-                      <mat-label>Correo</mat-label>
-                      <input type="username" formControlName="username" matInput required/>
-                      <mat-error *ngIf="isValidField('username')">
-                      {{getErrorMessage("username")}}
-                      </mat-error>
-                  </mat-form-field>
-
-
-                  <!--<span class="aLink">Olvidó su contraseña?</span>-->
-                  <mat-form-field class="full-width-input" appearance="outline" separator>
-                      <mat-label>Contraseña</mat-label>
-                      <input  [type]="hide ? 'password' : 'text'" formControlName="password" matInput  required/>
-
-                      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
-                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      </button>
-                      <mat-error *ngIf="isValidField('password')">
-                          {{getErrorMessage("password")}}
-                      </mat-error>
-                  </mat-form-field>
-
-              <button type="submit" [disabled]="loginForm.invalid" mat-raised-button color="primary">INGRESAR</button>
-          </form>
-
-      </mat-card-content>
-
-    </mat-card>
-
-    <div class="panels-container">
-      <div class="panel left-panel">
-        <div class="content">
-          <h3>Bienvenido...!!!</h3>
-          <p>  «Tu trabajo va a llenar gran parte de tu vida, la única manera de estar realmente satisfecho es hacer lo que creas que es un gran trabajo y la única manera de hacerlo es amar lo que haces. Si no lo has encontrado aún, sigue buscando. Como con todo lo que tiene que ver con el corazón, lo sabrás cuando lo hayas encontrado.» STEVE JOBS</p>
-        </div>
-        <img src="../../../assets/imagehome/add_cart.svg" class="image" alt="">
-
+  <mat-card class="card_inicio_sesion">
+    <mat-card-content>
+      <div class="header">
+        <h2>INICIAR SESIÓN</h2>
       </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()" name="loginForm">
+        <mat-form-field class="full-width-input" appearance="outline">
+          <mat-label>Correo</mat-label>
+          <input type="username" formControlName="username" matInput required />
+          <mat-error *ngIf="isValidField('username')">
+            {{ getErrorMessage("username") }}
+          </mat-error>
+        </mat-form-field>
 
-      <div class="panel right-panel">
+        <!--<span class="aLink">Olvidó su contraseña?</span>-->
+        <mat-form-field class="full-width-input" appearance="outline" separator>
+          <mat-label>Contraseña</mat-label>
+          <input
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+            matInput
+            required
+          />
 
-        <img src="../../../assets/imagehome/login.svg" class="image" alt="">
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="isValidField('password')">
+            {{ getErrorMessage("password") }}
+          </mat-error>
+        </mat-form-field>
 
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid"
+          mat-raised-button
+          color="primary"
+        >
+          INGRESAR
+        </button>
+        <br />
+
+        <span id="linkforgot"
+          ><a routerLink="/submitemail"> Olvidé mi contraseña</a></span
+        >
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="panels-container">
+    <div class="panel left-panel">
+      <div class="content">
+        <h3>Bienvenido...!!!</h3>
+        <p>
+          «Tu trabajo va a llenar gran parte de tu vida, la única manera de
+          estar realmente satisfecho es hacer lo que creas que es un gran
+          trabajo y la única manera de hacerlo es amar lo que haces. Si no lo
+          has encontrado aún, sigue buscando. Como con todo lo que tiene que ver
+          con el corazón, lo sabrás cuando lo hayas encontrado.» STEVE JOBS
+        </p>
       </div>
-
+      <img src="../../../assets/imagehome/add_cart.svg" class="image" alt="" />
     </div>
 
+    <div class="panel right-panel">
+      <img src="../../../assets/imagehome/login.svg" class="image" alt="" />
+    </div>
+  </div>
 </div>
-

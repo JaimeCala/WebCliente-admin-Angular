@@ -1,136 +1,118 @@
-table{
-    width: 95%;
-    margin: 0 auto;
-    margin-top: 1rem;
+table {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 1rem;
 
-    table-layout: fixed;
+  table-layout: fixed;
+}
+th,
+td {
+  overflow: hidden;
+  width: 50px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mat-column-idproducto {
+  flex: none;
+  width: 4%;
+}
 
+.mat-column-nombre {
+  flex: none;
+  width: 10%;
+}
 
- }
- th,td{
-     overflow: hidden;
-     width: 50px;
-     text-overflow: ellipsis;
-     white-space: nowrap;
- }
- .mat-column-idproducto {
-     flex: none;
-     width: 4%;
- }
+.mat-column-stock {
+  flex: none;
+  width: 5%;
+}
 
- .mat-column-nombre {
-     flex: none;
-     width: 10%;
- }
+.mat-column-vencimiento {
+  flex: none;
+  width: 12%;
+}
+.mat-column-precio {
+  flex: none;
+  width: 5%;
+}
 
- .mat-column-stock {
-     flex: none;
-     width: 5%;
+.mat-column-idproveedor {
+  flex: none;
+  width: 4%;
+}
 
- }
+.mat-column-nombre {
+  flex: none;
+  width: 10%;
+}
 
+.mat-column-ci_nit {
+  flex: none;
+  width: 8%;
+}
+.mat-column-telefono {
+  flex: none;
+  width: 9%;
+}
 
-.mat-column-vencimiento{
-     flex: none;
-     width: 12%;
- }
- .mat-column-precio{
-     flex: none;
-     width: 5%;
- }
+.mat-column-email {
+  flex: none;
+  width: 15%;
+}
 
+.mat-column-direccion {
+  flex: none;
+  width: 15%;
+}
 
+.search-div {
+  margin: 10px;
+}
+.search-form-field {
+  width: 30%;
+  margin-left: 2%;
+}
+.paginator {
+  width: 95%;
+}
 
- .mat-column-idproveedor{
-     flex: none;
-     width: 4%;
- }
+th.mat-sort-header-sorted {
+  color: black;
+}
 
- .mat-column-nombre{
-     flex: none;
-     width: 10%;
- }
+th.mat-header-cell {
+  background-color: #79dae8;
+  /*background-color: rgb(54, 190, 88);*/
+  color: #2155cd;
 
- .mat-column-ci_nit{
-     flex: none;
-     width: 8%;
- }
- .mat-column-telefono{
-     flex: none;
-     width: 9%;
- }
+  font-weight: bold;
+  font-family: Arial;
 
+  text-align: left;
+  max-width: 300px;
+}
 
+.table-button-row button {
+  margin: 12px;
+}
+.detall-pedido {
+  font-size: x-large;
+  font-weight: bold;
+  font-family: "Lucida Sans";
+  text-align: center;
+  font-style: normal;
+  color: blue;
+}
+.btn-cancel {
+  left: 45%;
+  top: auto;
+  background-color: rgb(28, 29, 31);
+  color: #dfece8;
+}
 
- .mat-column-email{
-     flex: none;
-     width: 15%;
- }
-
- .mat-column-direccion{
-     flex: none;
-     width: 15%;
- }
-
-
-
-
- .search-div{
-     margin: 10px;
- }
- .search-form-field{
-     width: 30%;
-     margin-left: 2%;
-
-
-
- }
- .paginator{
-     width: 95%;
- }
-
- th.mat-sort-header-sorted{
-     color: black;
- }
-
- th.mat-header-cell{
-     background-color: #79DAE8;
-     /*background-color: rgb(54, 190, 88);*/
-     color: #2155CD;
-
-     font-weight: bold;
-     font-family: Arial;
-
-     text-align: left;
-     max-width: 300px;
-
- }
-
-
-
-
- .table-button-row button{
-     margin: 12px;
-
- }
- .detall-pedido{
-     font-size: x-large;
-     font-weight: bold;
-     font-family: 'Lucida Sans';
-     text-align: center;
-     font-style: normal;
-     color: blue;
- }
- .btn-cancel{
-     left: 45%;
-     top: auto;
-     background-color: rgb(28, 29, 31);
-     color: #dfece8;
- }
-
- .btn-actionsCancel{
-     left: 45%;
-     top: auto;
-     background-color: rgb(20, 22, 21);
-     color: #d7e9e3;
- }
+.btn-actionsCancel {
+  left: 45%;
+  top: auto;
+  background-color: rgb(20, 22, 21);
+  color: #d7e9e3;
+}

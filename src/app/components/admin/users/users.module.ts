@@ -5,13 +5,8 @@ import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { MaterialModule } from '../../../material.module';
 
-
 @NgModule({
   declarations: [UsersComponent],
-  imports: [
-    CommonModule,
-    UsersRoutingModule,
-    MaterialModule,
-  ]
+  imports: [CommonModule, UsersRoutingModule, MaterialModule],
 })
-export class UsersModule { }
+export class UsersModule {}

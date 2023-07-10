@@ -7,10 +7,6 @@ import { MaterialModule } from '../../../material.module';
 
 @NgModule({
   declarations: [ProveedorComponent],
-  imports: [
-    CommonModule,
-    ProveedorRoutingModule,
-    MaterialModule,
-  ]
+  imports: [CommonModule, ProveedorRoutingModule, MaterialModule],
 })
-export class ProveedorModule { }
+export class ProveedorModule {}

@@ -1,135 +1,96 @@
-table{
-    width: 95%;
-    margin: 0 auto;
-    margin-top: 1rem;
+table {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 1rem;
 
-    table-layout: fixed;
+  table-layout: fixed;
+}
 
+th,
+td {
+  overflow: hidden;
+  width: 50px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mat-column-idusuario {
+  flex: none;
+  width: 2%;
+}
 
- }
+.mat-column-expedido {
+  flex: none;
+  width: 2%;
+}
 
+.search-div {
+  margin: 10px;
+}
 
- th,td{
-     overflow: hidden;
-     width: 50px;
-     text-overflow: ellipsis;
-     white-space: nowrap;
- }
- .mat-column-idusuario{
-     flex: none;
-     width: 2%;
- }
+.paginator {
+  width: 95%;
+}
 
- .mat-column-expedido{
-     flex: none;
-     width: 2%;
- }
+th.mat-sort-header-sorted {
+  color: black;
+}
 
- .search-div{
-     margin: 10px;
- }
- /*.search-form-field{
-     width: 30%;
-     margin-left: 2%;
+th.mat-header-cell {
+  background-color: #79dae8;
+  /*background-color: rgb(54, 190, 88);*/
+  color: #2155cd;
 
- }*/
- .paginator{
-     width: 95%;
- }
+  font-weight: bold;
+  font-family: Arial;
 
- th.mat-sort-header-sorted{
-     color: black;
- }
+  text-align: left;
+  max-width: 300px;
+}
 
- th.mat-header-cell{
-     background-color: #79DAE8;
-     /*background-color: rgb(54, 190, 88);*/
-     color: #2155CD;
+.button-yellow {
+  background-color: #79dae8;
+}
+.button-rosado {
+  color: floralwhite;
+  background-color: #2155cd;
+  width: 30%;
+  left: 35px;
+}
 
-     font-weight: bold;
-     font-family: Arial;
+.table-button-actions button {
+  margin: 12px;
+}
 
-     text-align: left;
-     max-width: 300px;
+.caja-range-btnAgrega-pdf {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  height: 100px;
 
- }
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+.caja-range-btnAgrega-pdf .table-button-row {
+  display: flex;
+  align-items: center;
+}
+.caja-range-btnAgrega-pdf .table-button-row button {
+  padding: 3px 10px;
+  font-size: 14px;
+}
+.caja-range-btnAgrega-pdf .table-range {
+  display: flex;
+  align-items: flex-end;
+}
 
-
- .button-yellow{
-
-     background-color: #79DAE8;
- }
- .button-rosado{
-     color: floralwhite;
-     background-color: #2155CD;
-     width:30%;
-     left:  35px;
-
- }
-
-
- .table-button-actions button{
-     margin: 12px;
-
- }
-
-
-
-
-
-  .caja-range-btnAgrega-pdf{
-    display: grid;
-    grid-template-columns: 400px 1fr;
-    height: 100px;
-
-    margin-top: 30px;
-    margin-bottom: 5px;
-  }
-  .caja-range-btnAgrega-pdf .table-button-row {
-
-    display: flex;
-    align-items: center;
-
-
-  }
-  .caja-range-btnAgrega-pdf .table-button-row button{
-
-    padding: 3px 10px;
-    font-size: 14px;
-
-  }
-  .caja-range-btnAgrega-pdf .table-range {
-
-    display: flex;
-    align-items: flex-end;
-
-
-
-
-
-
-  }
-
-
-  .caja-range-btnAgrega-pdf .table-range .search-form-range{
-   font-size: 12px;
-
-
-
-  }
-  .caja-range-btnAgrega-pdf .table-range .search-form-field{
-
-    font-size:  12px;
-    width: 300px;
-
-
-
-  }
-  .caja-range-btnAgrega-pdf .table-range .search-form-range, button{
-
-    margin-left: 5px;
-    padding: 3px 15px;
-  }
-
-
-
+.caja-range-btnAgrega-pdf .table-range .search-form-range {
+  font-size: 12px;
+}
+.caja-range-btnAgrega-pdf .table-range .search-form-field {
+  font-size: 12px;
+  width: 300px;
+}
+.caja-range-btnAgrega-pdf .table-range .search-form-range,
+button {
+  margin-left: 5px;
+  padding: 3px 15px;
+}

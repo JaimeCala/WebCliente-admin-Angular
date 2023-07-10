@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "name": "nest_oficial",
+      "path": "../../../../../nest_oficial"
+    },
+    {
+      "name": "cliente_angular",
+      "path": "../../../.."
+    }
+  ],
+  "settings": {
+    "angular.enable-strict-mode-prompt": false
+  }
+}

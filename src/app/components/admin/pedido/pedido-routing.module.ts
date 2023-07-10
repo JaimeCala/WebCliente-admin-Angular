@@ -7,6 +7,6 @@ const routes: Routes = [{ path: '', component: PedidoComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PedidoRoutingModule { }
+export class PedidoRoutingModule {}

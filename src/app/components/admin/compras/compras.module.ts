@@ -5,15 +5,8 @@ import { ComprasRoutingModule } from './compras-routing.module';
 import { ComprasComponent } from './compras.component';
 import { MaterialModule } from '../../../material.module';
 
-
 @NgModule({
-  declarations: [
-    ComprasComponent
-  ],
-  imports: [
-    CommonModule,
-    ComprasRoutingModule,
-    MaterialModule,
-  ]
+  declarations: [ComprasComponent],
+  imports: [CommonModule, ComprasRoutingModule, MaterialModule],
 })
-export class ComprasModule { }
+export class ComprasModule {}

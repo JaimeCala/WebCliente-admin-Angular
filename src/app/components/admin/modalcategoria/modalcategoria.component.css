@@ -1,48 +1,40 @@
-.modal-form{
-    padding: 1rem 0;
-   
-   
-} 
-.modal-form .full-width-input{
-        width: 100%;
-       
-   
+.modal-form {
+  padding: 1rem 0;
+}
+.modal-form .full-width-input {
+  width: 100%;
 }
 
-input[type='file']{
-    display: none;
+input[type="file"] {
+  display: none;
 }
-.custom-file{
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 0;
-    cursor: pointer;
-    width: 100%;
+.custom-file {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 0;
+  cursor: pointer;
+  width: 100%;
 }
-mat-card{
-    max-width: 150px;
-    margin: 2em auto;
-   
-    max-height: 350px;
-    margin-left: 10px;
-    margin-top: 10px;
-    position: absolute;
-}
-.img-fluid{
-    max-width: 150px;
-    max-height: 150px;
-}
- .btn-actionsCancel {
-   
-    position: absolute;
-    margin-left: 250px;
-    margin-top: 100px;
-}
- .btn-actionsSave {
-   
-    position: absolute;
-    margin-left: 350px;
-    margin-top: 100px;
-}
+mat-card {
+  max-width: 150px;
+  margin: 2em auto;
 
-
+  max-height: 350px;
+  margin-left: 10px;
+  margin-top: 10px;
+  position: absolute;
+}
+.img-fluid {
+  max-width: 150px;
+  max-height: 150px;
+}
+.btn-actionsCancel {
+  position: absolute;
+  margin-left: 250px;
+  margin-top: 100px;
+}
+.btn-actionsSave {
+  position: absolute;
+  margin-left: 350px;
+  margin-top: 100px;
+}

@@ -1,173 +1,133 @@
+table {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 1rem;
 
-table{
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 1rem;
-
-    table-layout: fixed;
-
-
- }
- th,td{
-     overflow: hidden;
-     width: 50px;
-     text-overflow: ellipsis;
-     white-space: nowrap;
- }
- .mat-column-idproveedor {
-     flex: none;
-     width: 2%;
- }
- .mat-column-actions{
+  table-layout: fixed;
+}
+th,
+td {
+  overflow: hidden;
+  width: 50px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mat-column-idproveedor {
+  flex: none;
+  width: 2%;
+}
+.mat-column-actions {
   flex: none;
   width: 7%;
- }
+}
 
- .mat-column-nombre {
-     flex: none;
-     width: 20%;
- }
+.mat-column-nombre {
+  flex: none;
+  width: 20%;
+}
 
- .mat-column-ci_nit {
-     flex: none;
-     width: 5%;
- }
+.mat-column-ci_nit {
+  flex: none;
+  width: 5%;
+}
 
+.mat-column-telefono {
+  flex: none;
+  width: 7%;
+}
+.mat-column-estado {
+  flex: none;
+  width: 5%;
+}
 
-.mat-column-telefono{
-     flex: none;
-     width: 7%;
- }
- .mat-column-estado{
-     flex: none;
-     width: 5%;
- }
+.mat-column-email {
+  flex: none;
+  width: 7%;
+}
 
- .mat-column-email{
-     flex: none;
-     width: 7%;
- }
+.mat-column-direccion {
+  flex: none;
+  width: 15%;
+}
 
- .mat-column-direccion{
-     flex: none;
-     width: 15%;
- }
+.mat-column-fecha {
+  flex: none;
+  width: 10%;
+}
 
- .mat-column-fecha{
-     flex: none;
-     width: 10%;
- }
+.mat-column-hora {
+  flex: none;
+  width: 6%;
+}
 
- .mat-column-hora{
-     flex: none;
-     width: 6%;
- }
+.search-div {
+  margin: 10px;
+}
 
+.paginator {
+  width: 95%;
+}
 
- .search-div{
-     margin: 10px;
- }
- /*.search-form-field{
-     width: 30%;
-     margin-left: 2%;
+th.mat-sort-header-sorted {
+  color: black;
+}
 
+th.mat-header-cell {
+  background-color: #79dae8;
+  /*background-color: rgb(54, 190, 88);*/
+  color: #2155cd;
 
+  font-weight: bold;
+  font-family: Arial;
 
- }*/
- .paginator{
-     width: 95%;
- }
+  text-align: left;
+  max-width: 300px;
+}
 
- th.mat-sort-header-sorted{
-     color: black;
- }
+.button-yellow {
+  background-color: rgb(19, 226, 233);
+}
+.button-rosado {
+  color: floralwhite;
+  background-color: #2155cd;
+  width: 30%;
+  left: 35px;
+}
 
- th.mat-header-cell{
-     background-color: #79DAE8;
-     /*background-color: rgb(54, 190, 88);*/
-     color: #2155CD;
+.table-button-row button {
+  margin: 12px;
+}
 
-     font-weight: bold;
-     font-family: Arial;
+.caja-range-btnAgrega-pdf {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  height: 100px;
 
-     text-align: left;
-     max-width: 300px;
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+.caja-range-btnAgrega-pdf .table-button-row {
+  display: flex;
+  align-items: center;
+}
+.caja-range-btnAgrega-pdf .table-button-row button {
+  padding: 3px 10px;
+  font-size: 14px;
+}
+.caja-range-btnAgrega-pdf .table-range {
+  display: flex;
+  align-items: flex-end;
+}
 
- }
-
- .button-yellow{
-
-     background-color: rgb(19, 226, 233);
- }
- .button-rosado{
-     color: floralwhite;
-     background-color: #2155CD;
-     width:30%;
-     left:  35px;
-
- }
-
-
- .table-button-row button{
-     margin: 12px;
-
- }
-
-
-
-
-  .caja-range-btnAgrega-pdf{
-    display: grid;
-    grid-template-columns: 400px 1fr;
-    height: 100px;
-
-    margin-top: 30px;
-    margin-bottom: 5px;
-  }
-  .caja-range-btnAgrega-pdf .table-button-row {
-
-    display: flex;
-    align-items: center;
-
-
-  }
-  .caja-range-btnAgrega-pdf .table-button-row button{
-
-    padding: 3px 10px;
-    font-size: 14px;
-
-  }
-  .caja-range-btnAgrega-pdf .table-range {
-
-    display: flex;
-    align-items: flex-end;
-
-
-
-
-
-
-  }
-
-
-  .caja-range-btnAgrega-pdf .table-range .search-form-range{
-   font-size: 12px;
-
-
-
-  }
-  .caja-range-btnAgrega-pdf .table-range .search-form-field{
-
-    font-size:  12px;
-    width: 300px;
-
-
-
-  }
-  .caja-range-btnAgrega-pdf .table-range .search-form-range, button{
-
-    margin-left: 5px;
-    padding: 3px 15px;
-  }
-
-
+.caja-range-btnAgrega-pdf .table-range .search-form-range {
+  font-size: 12px;
+}
+.caja-range-btnAgrega-pdf .table-range .search-form-field {
+  font-size: 12px;
+  width: 300px;
+}
+.caja-range-btnAgrega-pdf .table-range .search-form-range,
+button {
+  margin-left: 5px;
+  padding: 3px 15px;
+}

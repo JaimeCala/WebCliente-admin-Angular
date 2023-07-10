@@ -5,14 +5,8 @@ import { PedidoRoutingModule } from './pedido-routing.module';
 import { PedidoComponent } from './pedido.component';
 import { MaterialModule } from '../../../material.module';
 
-
 @NgModule({
   declarations: [PedidoComponent],
-  imports: [
-    CommonModule,
-    PedidoRoutingModule,
-    MaterialModule,
-
-  ]
+  imports: [CommonModule, PedidoRoutingModule, MaterialModule],
 })
-export class PedidoModule { }
+export class PedidoModule {}

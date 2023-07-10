@@ -5,15 +5,8 @@ import { MasvendidosRoutingModule } from './masvendidos-routing.module';
 import { MasvendidosComponent } from './masvendidos.component';
 import { MaterialModule } from '../../../material.module';
 
-
 @NgModule({
-  declarations: [
-    MasvendidosComponent
-  ],
-  imports: [
-    CommonModule,
-    MasvendidosRoutingModule,
-    MaterialModule,
-  ]
+  declarations: [MasvendidosComponent],
+  imports: [CommonModule, MasvendidosRoutingModule, MaterialModule],
 })
-export class MasvendidosModule { }
+export class MasvendidosModule {}
